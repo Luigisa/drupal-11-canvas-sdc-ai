@@ -1,0 +1,44 @@
+/**
+ * @file
+ * Entrada Tailwind v4: compilar a global.css (ver package.json).
+ */
+@import "tailwindcss";
+
+/* Escanear plantillas y estilos SDC para generar utilidades y @apply. */
+@source "../templates/**/*.twig";
+@source "../components/**/*.twig";
+@source "../components/**/*.css";
+
+@layer base {
+  .layout-content :where(h1) {
+    @apply text-3xl font-semibold tracking-tight text-slate-900 lg:text-4xl;
+  }
+
+  .layout-content :where(h2) {
+    @apply mt-8 text-2xl font-semibold tracking-tight text-slate-900 first:mt-0;
+  }
+
+  .layout-content :where(h3) {
+    @apply mt-6 text-xl font-semibold text-slate-800 first:mt-0;
+  }
+
+  .layout-content :where(p) {
+    @apply mt-4 max-w-prose leading-relaxed text-slate-600 first:mt-0;
+  }
+
+  .layout-content :where(a) {
+    @apply font-medium text-teal-700 underline decoration-teal-700/30 underline-offset-2 transition-colors hover:text-teal-900 hover:decoration-teal-900/40;
+  }
+
+  .layout-content :where(ul, ol) {
+    @apply my-4 max-w-prose list-outside space-y-2 pl-6 text-slate-600;
+  }
+
+  .layout-content :where(ul) {
+    @apply list-disc;
+  }
+
+  .layout-content :where(ol) {
+    @apply list-decimal;
+  }
+}

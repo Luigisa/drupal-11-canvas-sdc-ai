@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+Si vas a crear un componente SDC, asegúrate de que:
+
+- El nombre del componente es singular y en inglés.
+- El nombre del componente es descriptivo y no genérico.
+- El nombre del componente es único y no existe ya en el repositorio.
+- El nombre del componente es fácil de entender y recordar.
+
+Tenemos una utilidad en el proyecto que se llama "generate single-directory-component", que nos permite crear un componente SDC.
+
+ddev drush generate single-directory-component

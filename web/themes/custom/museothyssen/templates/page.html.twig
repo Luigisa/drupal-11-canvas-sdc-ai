@@ -4,27 +4,41 @@
  * Layout de página: regiones alineadas con museothyssen.info.yml.
  */
 #}
-<div class="layout-page">
+<div class="layout-page flex min-h-screen flex-col bg-gradient-to-b from-slate-50 to-slate-100 font-sans text-slate-900 antialiased">
   {{ page.page_top }}
-  <header role="banner">
-    {{ page.header }}
+  <header class="border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-md" role="banner">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4 lg:px-6">
+      {{ page.header }}
+    </div>
   </header>
-  {{ page.primary_menu }}
-  {{ page.highlighted }}
-  <main role="main">
-    <a id="main-content" tabindex="-1"></a>
-    <div class="layout-content">
+  <div class="border-b border-slate-100 bg-white px-4 py-2 lg:px-6">
+    <div class="mx-auto max-w-6xl text-sm font-medium text-slate-700">
+      {{ page.primary_menu }}
+    </div>
+  </div>
+  {% if page.highlighted %}
+    <div class="mx-auto w-full max-w-6xl px-4 pt-4 lg:px-6">
+      {{ page.highlighted }}
+    </div>
+  {% endif %}
+  <main class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-8 lg:flex-row lg:gap-10 lg:px-6 lg:py-12" role="main">
+    <a id="main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-3 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2" tabindex="-1">{{ 'Skip to main content'|t }}</a>
+    <div class="layout-content min-w-0 flex-1">
       {{ page.content }}
     </div>
     {% if page.sidebar %}
-      <aside class="layout-sidebar" role="complementary">
-        {{ page.sidebar }}
+      <aside class="layout-sidebar w-full shrink-0 lg:w-72 xl:w-80" role="complementary">
+        <div class="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
+          {{ page.sidebar }}
+        </div>
       </aside>
     {% endif %}
   </main>
   {% if page.footer %}
-    <footer role="contentinfo">
-      {{ page.footer }}
+    <footer class="mt-auto border-t border-slate-200 bg-white" role="contentinfo">
+      <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-600 lg:px-6">
+        {{ page.footer }}
+      </div>
     </footer>
   {% endif %}
   {{ page.page_bottom }}

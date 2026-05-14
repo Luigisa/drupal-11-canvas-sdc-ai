@@ -4,6 +4,8 @@ description: 'Tema front Museo Thyssen con Single Directory Components.'
 package: Custom
 core_version_requirement: ^11
 base theme: stable9
+dependencies:
+  - drupal:canvas
 libraries:
   - museothyssen/global
 

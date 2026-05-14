@@ -5,4 +5,14 @@
 
 .museothyssen-hello {
   display: block;
+  max-width: 42rem;
+}
+
+.museothyssen-hello__media {
+  margin-inline: 0;
+}
+
+.museothyssen-hello__media img {
+  display: block;
+  vertical-align: middle;
 }

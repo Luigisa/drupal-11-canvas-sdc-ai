@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+Antes de pedirle al usuario que ejecute un comando con ddev o drush, ejecutalo tú mismo y comprueba que funciona.

@@ -1,0 +1,12 @@
+{
+  "name": "museothyssen",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./css/tailwind.input.css -o ./css/global.css --minify",
+    "watch": "tailwindcss -i ./css/tailwind.input.css -o ./css/global.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4",
+    "tailwindcss": "^4"
+  }
+}

@@ -2,8 +2,48 @@
 /**
  * @file
  * Componente SDC de ejemplo: museothyssen:hello
+ *
+ * Imagen vía canvas:image (@see Canvas SDC — Images).
  */
 #}
-<div{{ attributes.addClass('museothyssen-hello') }}>
-  {% block body %}{% endblock %}
+<div{{ attributes.addClass('museothyssen-hello rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm ring-1 ring-slate-900/5') }}>
+  {% if image %}
+    <figure class="museothyssen-hello__media mb-4 overflow-hidden rounded-xl">
+      {% if image is iterable and (
+        image['#theme'] is defined
+        or image['#type'] is defined
+        or image['#markup'] is defined
+        or image['#lazy_builder'] is defined
+      ) %}
+        {# Render array (Media, formatters de imagen, responsive_image, etc.). #}
+        <div class="museothyssen-hello__image-build [&_img]:h-auto [&_img]:w-full [&_img]:object-cover">
+          {{ image }}
+        </div>
+      {% elseif image.src is defined %}
+        {% include 'canvas:image' with image|merge({
+          alt: image.alt|default(title|default('')),
+          loading: image.loading|default('lazy'),
+          sizes: image.sizes|default('(max-width: 768px) 100vw, min(42rem, 100vw)'),
+          class: image.class|default('museothyssen-hello__img h-auto w-full object-cover'),
+          attributes: image.attributes is defined ? image.attributes : create_attribute({}),
+        })|filter((value) => value is not null) only %}
+      {% else %}
+        {# URL string u objeto sin clave src explícita en Twig: tratar como src. #}
+        {% include 'canvas:image' with {
+          src: image,
+          alt: title|default(''),
+          loading: 'lazy',
+          sizes: '(max-width: 768px) 100vw, min(42rem, 100vw)',
+          class: 'museothyssen-hello__img h-auto w-full object-cover',
+          attributes: create_attribute({}),
+        } only %}
+      {% endif %}
+    </figure>
+  {% endif %}
+  {% if title %}
+    <h2 class="museothyssen-hello__title text-xl font-semibold tracking-tight text-slate-900">{{ title }}</h2>
+  {% endif %}
+  {% if subtitle %}
+    <p class="museothyssen-hello__subtitle mt-1 text-sm text-slate-600">{{ subtitle }}</p>
+  {% endif %}
 </div>

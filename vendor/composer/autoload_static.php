@@ -14,11 +14,11 @@ class ComposerStaticInit1c94884feafe7e7de67cff6263fe48f2
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '606a39d89246991a373564698c2d8383' => __DIR__ . '/..' . '/symfony/polyfill-php85/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '9d2b9fc6db0f153a0a149fefb182415e' => __DIR__ . '/..' . '/symfony/polyfill-php84/bootstrap.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '89efb1254ef2d1c5d80096acd12c4098' => __DIR__ . '/..' . '/twig/twig/src/Resources/core.php',
         'ffecb95d45175fd40f75be8a23b34f90' => __DIR__ . '/..' . '/twig/twig/src/Resources/debug.php',
         'c7baa00073ee9c61edf148c51917cfb4' => __DIR__ . '/..' . '/twig/twig/src/Resources/escaper.php',
@@ -97,11 +97,16 @@ class ComposerStaticInit1c94884feafe7e7de67cff6263fe48f2
         'M' =>
         array (
             'Masterminds\\' => 12,
+            'MabeEnum\\' => 9,
         ),
         'L' =>
         array (
             'League\\Container\\' => 17,
             'Laravel\\Prompts\\' => 16,
+        ),
+        'J' =>
+        array (
+            'JsonSchema\\' => 11,
         ),
         'G' =>
         array (
@@ -339,6 +344,10 @@ class ComposerStaticInit1c94884feafe7e7de67cff6263fe48f2
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'MabeEnum\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/marc-mabe/php-enum/src',
+        ),
         'League\\Container\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
@@ -346,6 +355,10 @@ class ComposerStaticInit1c94884feafe7e7de67cff6263fe48f2
         'Laravel\\Prompts\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/prompts/src',
+        ),
+        'JsonSchema\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
         'GuzzleHttp\\Psr7\\' =>
         array (
@@ -530,6 +543,7 @@ class ComposerStaticInit1c94884feafe7e7de67cff6263fe48f2
         'SebastianBergmann\\Diff\\Output\\UnifiedDiffOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/UnifiedDiffOutputBuilder.php',
         'SebastianBergmann\\Diff\\Parser' => __DIR__ . '/..' . '/sebastian/diff/src/Parser.php',
         'SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => __DIR__ . '/..' . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
+        'Stringable' => __DIR__ . '/..' . '/marc-mabe/php-enum/stubs/Stringable.php',
         'Symfony\\Component\\DependencyInjection\\ContainerInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/ContainerInterface.php',
         'Symfony\\Component\\HttpFoundation\\FileBag' => __DIR__ . '/..' . '/symfony/http-foundation/FileBag.php',
         'Symfony\\Component\\HttpFoundation\\HeaderBag' => __DIR__ . '/..' . '/symfony/http-foundation/HeaderBag.php',
