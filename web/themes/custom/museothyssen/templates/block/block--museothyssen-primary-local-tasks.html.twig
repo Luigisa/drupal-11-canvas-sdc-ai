@@ -1,0 +1,14 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Tabs locales primarias (id bloque: museothyssen_primary_local_tasks).
+ */
+#}
+{% block content %}
+  {% if content %}
+    <div class="mt-primary-local-tasks overflow-x-auto rounded-xl border border-slate-200/90 bg-slate-50/95 p-1 shadow-sm ring-1 ring-slate-900/5 [&_h2]:sr-only [&_ul]:m-0 [&_ul]:flex [&_ul]:list-none [&_ul]:flex-nowrap [&_ul]:items-center [&_ul]:gap-1 [&_ul]:p-0 [&_ul]:sm:flex-wrap [&_li]:list-none [&_a]:inline-flex [&_a]:items-center [&_a]:justify-center [&_a]:rounded-lg [&_a]:px-3.5 [&_a]:py-2 [&_a]:text-sm [&_a]:font-medium [&_a]:text-slate-600 [&_a]:no-underline [&_a]:transition-colors [&_a]:hover:bg-white [&_a]:hover:text-slate-900 [&_a]:focus-visible:outline-none [&_a]:focus-visible:ring-2 [&_a]:focus-visible:ring-teal-500 [&_a]:focus-visible:ring-offset-2 [&_a.is-active]:bg-slate-900 [&_a.is-active]:text-white [&_a.is-active]:shadow-sm [&_a.is-active]:hover:bg-slate-800 [&_a.is-active]:hover:text-white">
+      {{ content }}
+    </div>
+  {% endif %}
+{% endblock %}
