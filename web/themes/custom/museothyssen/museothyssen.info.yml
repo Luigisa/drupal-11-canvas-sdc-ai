@@ -1,0 +1,18 @@
+name: 'Museo Thyssen'
+type: theme
+description: 'Tema front Museo Thyssen con Single Directory Components.'
+package: Custom
+core_version_requirement: ^11
+base theme: stable9
+libraries:
+  - museothyssen/global
+
+regions:
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  header: Header
+  primary_menu: 'Primary menu'
+  highlighted: Highlighted
+  content: Content
+  sidebar: Sidebar
+  footer: Footer

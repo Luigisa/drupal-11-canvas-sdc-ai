@@ -1,0 +1,46 @@
+### Drupal — dependencias instaladas por Composer (no versionar)
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+/drush/Commands/contrib/
+
+# Recetas empaquetadas (composer type:drupal-recipe); conservar README del esqueleto
+/recipes/*
+!/recipes/README.txt
+
+### Sitio: subidas, caché, temporales, secretos locales
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/translations/
+/web/sites/*/settings.local.php
+/web/sites/*/services.local.yml
+/web/sites/simpletest/
+
+### Variables de entorno y caché de herramientas PHP
+.env
+.env.*
+!.env.example
+/.phpunit.result.cache
+
+### Node (temas o herramientas con npm/yarn/pnpm en el repo)
+node_modules/
+
+### IDE y sistema operativo
+/.idea/
+*.iml
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+### Volcados y logs locales
+*.log
+*.sql
+*.sql.gz
+
+### Caché de preprocesadores (si usas Sass/Less en el tema)
+.sass-cache/

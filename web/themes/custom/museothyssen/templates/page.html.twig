@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Layout de página: regiones alineadas con museothyssen.info.yml.
+ */
+#}
+<div class="layout-page">
+  {{ page.page_top }}
+  <header role="banner">
+    {{ page.header }}
+  </header>
+  {{ page.primary_menu }}
+  {{ page.highlighted }}
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>
+    <div class="layout-content">
+      {{ page.content }}
+    </div>
+    {% if page.sidebar %}
+      <aside class="layout-sidebar" role="complementary">
+        {{ page.sidebar }}
+      </aside>
+    {% endif %}
+  </main>
+  {% if page.footer %}
+    <footer role="contentinfo">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+  {{ page.page_bottom }}
+</div>
