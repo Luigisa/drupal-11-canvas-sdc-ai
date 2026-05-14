@@ -1,6 +1,6 @@
 uuid: 2b0f961b-7be0-4368-84d6-a69a90702c57
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - museothyssen
@@ -9,7 +9,7 @@ _core:
 id: museothyssen_page_title
 theme: museothyssen
 region: header
-weight: -5
+weight: -7
 provider: null
 plugin: page_title_block
 settings:

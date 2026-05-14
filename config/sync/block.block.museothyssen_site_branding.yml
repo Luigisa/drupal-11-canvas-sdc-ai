@@ -1,6 +1,6 @@
 uuid: 3d2b41df-22ba-45ce-b7e8-f95ee28ffea0
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: museothyssen_site_branding
 theme: museothyssen
 region: header
-weight: 0
+weight: -2
 provider: null
 plugin: system_branding_block
 settings:

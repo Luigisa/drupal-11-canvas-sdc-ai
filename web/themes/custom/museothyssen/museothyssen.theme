@@ -75,3 +75,39 @@ function museothyssen_preprocess_page(array &$variables): void {
   $variables['site_name'] = (string) \Drupal::config('system.site')->get('name');
   $variables['current_year'] = (string) (int) date('Y');
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for menu_local_action.
+ */
+function museothyssen_preprocess_menu_local_action(array &$variables): void {
+  // Core añade clases admin (.button); quitamos para que manden utilidades Twig.
+  if (!isset($variables['link']['#options']['attributes']['class'])) {
+    return;
+  }
+  $classes = $variables['link']['#options']['attributes']['class'];
+  if (!is_array($classes)) {
+    return;
+  }
+  $variables['link']['#options']['attributes']['class'] = array_values(
+    array_diff($classes, ['button', 'button-action'])
+  );
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function museothyssen_page_attachments_alter(array &$attachments): void {
+  if (\Drupal::theme()->getActiveTheme()->getName() !== 'museothyssen') {
+    return;
+  }
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'color-scheme',
+        'content' => 'light',
+      ],
+    ],
+    'museothyssen_color_scheme_light',
+  ];
+}

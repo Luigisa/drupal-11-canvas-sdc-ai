@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Una acción local (enlace tipo CTA admin).
+ */
+#}
+<li{{ attributes.addClass(
+  'list-none',
+  '[&_a]:inline-flex',
+  '[&_a]:items-center',
+  '[&_a]:justify-center',
+  '[&_a]:gap-2',
+  '[&_a]:rounded-lg',
+  '[&_a]:border',
+  '[&_a]:border-teal-600',
+  '[&_a]:bg-teal-600',
+  '[&_a]:px-4',
+  '[&_a]:py-2',
+  '[&_a]:text-sm',
+  '[&_a]:font-semibold',
+  '[&_a]:text-white',
+  '[&_a]:no-underline',
+  '[&_a]:shadow-sm',
+  '[&_a]:transition-colors',
+  '[&_a]:hover:border-teal-700',
+  '[&_a]:hover:bg-teal-700',
+  '[&_a]:focus-visible:outline-none',
+  '[&_a]:focus-visible:ring-2',
+  '[&_a]:focus-visible:ring-teal-400',
+  '[&_a]:focus-visible:ring-offset-2'
+) }}>{{ link }}</li>

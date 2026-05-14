@@ -1,0 +1,16 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Primary admin actions (plugin local_actions_block).
+ */
+#}
+{% block content %}
+  {% if content %}
+    <nav class="w-full max-w-full" role="navigation" aria-label="{{ 'Primary admin actions'|t }}">
+      <ul class="m-0 flex list-none flex-wrap items-center gap-2 p-0 sm:gap-3">
+        {{ content }}
+      </ul>
+    </nav>
+  {% endif %}
+{% endblock %}
