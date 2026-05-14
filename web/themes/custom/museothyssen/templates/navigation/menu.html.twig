@@ -1,0 +1,72 @@
+{#
+/**
+ * @file
+ * Menú horizontal/vertical según menu_layout (ver museothyssen_preprocess_menu).
+ */
+#}
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0, menu_layout|default('default')) }}
+
+{% macro menu_links(items, attributes, menu_level, layout) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      {% set root_classes = [
+        'list-none', 'm-0', 'p-0'
+      ] %}
+      {% if layout == 'footer' %}
+        {% set root_classes = root_classes|merge([
+          'flex', 'w-full', 'min-w-0', 'flex-col', 'items-stretch', 'gap-1', 'text-sm'
+        ]) %}
+      {% elseif layout == 'primary' %}
+        {% set root_classes = root_classes|merge([
+          'flex', 'w-full', 'min-w-0', 'flex-nowrap', 'items-center', 'gap-0.5', 'overflow-x-auto', 'pb-0.5', 'sm:flex-wrap', 'sm:gap-1', 'sm:overflow-visible', 'md:gap-2'
+        ]) %}
+      {% else %}
+        {% set root_classes = root_classes|merge([
+          'flex', 'flex-wrap', 'items-center', 'gap-1', 'md:gap-2'
+        ]) %}
+      {% endif %}
+      <ul{{ attributes.addClass(root_classes) }}>
+    {% else %}
+      {% if layout == 'footer' %}
+        <ul class="mt-2 flex list-none flex-col gap-1 border-l border-slate-300/80 py-1 pl-3 m-0 dark:border-slate-600">
+      {% else %}
+        <ul class="absolute left-0 top-full z-50 mt-1 hidden min-w-[12rem] list-none flex flex-col rounded-xl border border-slate-200 bg-white p-2 shadow-lg group-hover:flex group-focus-within:flex m-0 dark:border-slate-700 dark:bg-slate-900">
+      {% endif %}
+    {% endif %}
+    {% for item in items %}
+      {% set is_active = item.in_active_trail %}
+      {% if layout == 'primary' and menu_level == 0 %}
+        {% set link_surface = is_active
+          ? ['[&>a]:bg-white', '[&>a]:text-slate-900', '[&>a]:shadow-sm', '[&>a]:ring-1', '[&>a]:ring-white/20']
+          : ['[&>a]:text-slate-200', '[&>a]:hover:bg-white/10', '[&>a]:hover:text-white']
+        %}
+      {% elseif layout == 'footer' %}
+        {% set link_surface = is_active
+          ? ['[&>a]:bg-slate-200', '[&>a]:text-slate-900', '[&>a]:dark:bg-slate-700', '[&>a]:dark:text-white']
+          : ['[&>a]:text-slate-600', '[&>a]:hover:bg-slate-100', '[&>a]:hover:text-slate-900', '[&>a]:dark:text-slate-300', '[&>a]:dark:hover:bg-slate-800', '[&>a]:dark:hover:text-white']
+        %}
+      {% else %}
+        {% set link_surface = is_active
+          ? ['[&>a]:bg-slate-900', '[&>a]:text-white', '[&>a]:shadow-sm', '[&>a]:hover:bg-slate-800', '[&>a]:hover:text-white', '[&>a]:dark:bg-white', '[&>a]:dark:text-slate-900']
+          : ['[&>a]:text-slate-700', '[&>a]:hover:bg-slate-100', '[&>a]:hover:text-slate-900', '[&>a]:dark:text-slate-200', '[&>a]:dark:hover:bg-slate-800']
+        %}
+      {% endif %}
+      {% set li_base = [
+        'group', 'relative', 'list-none'
+      ] %}
+      {% set li_link_shape = menu_level == 0
+        ? ['[&>a]:inline-flex', '[&>a]:items-center', '[&>a]:rounded-lg', '[&>a]:px-3', '[&>a]:py-2', '[&>a]:text-sm', '[&>a]:font-semibold', '[&>a]:no-underline', '[&>a]:transition-colors']
+        : ['[&>a]:block', '[&>a]:rounded-md', '[&>a]:px-3', '[&>a]:py-1.5', '[&>a]:text-sm', '[&>a]:font-medium', '[&>a]:no-underline', '[&>a]:transition-colors']
+      %}
+      <li{{ item.attributes.addClass(li_base|merge(li_link_shape)|merge(link_surface)) }}>
+        {{ link(item.title, item.url) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, layout) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

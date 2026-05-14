@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Región menú principal (barra oscura).
+ */
+#}
+{% if content %}
+  <div{{ attributes.addClass(
+    'region',
+    'region-primary-menu',
+    'flex',
+    'w-full',
+    'min-w-0',
+    'items-center',
+    'py-1.5',
+    'sm:py-2'
+  ) }}>
+    {{ content }}
+  </div>
+{% endif %}

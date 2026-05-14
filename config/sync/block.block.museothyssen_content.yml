@@ -1,0 +1,22 @@
+uuid: 560b0dd6-22f7-4d0a-8516-c9cdffab8089
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - museothyssen
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: museothyssen_content
+theme: museothyssen
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

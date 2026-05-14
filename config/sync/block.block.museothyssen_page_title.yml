@@ -1,0 +1,20 @@
+uuid: 2b0f961b-7be0-4368-84d6-a69a90702c57
+langcode: en
+status: true
+dependencies:
+  theme:
+    - museothyssen
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: museothyssen_page_title
+theme: museothyssen
+region: header
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

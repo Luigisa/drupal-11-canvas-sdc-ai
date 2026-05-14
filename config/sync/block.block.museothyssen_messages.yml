@@ -1,0 +1,22 @@
+uuid: 09d16fc2-b348-4d43-96ff-c68d0b196b22
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - museothyssen
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: museothyssen_messages
+theme: museothyssen
+region: highlighted
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

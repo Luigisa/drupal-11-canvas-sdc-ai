@@ -1,0 +1,22 @@
+uuid: ce20facd-f09d-4e03-910f-00aa10b7efe2
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - museothyssen
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: museothyssen_breadcrumbs
+theme: museothyssen
+region: header
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

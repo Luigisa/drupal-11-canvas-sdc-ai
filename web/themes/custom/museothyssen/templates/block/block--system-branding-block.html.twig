@@ -1,0 +1,28 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Marca del sitio: logo + nombre + eslogan.
+ */
+#}
+{% block content %}
+  <div class="flex min-w-0 flex-wrap items-center gap-3 sm:gap-4">
+    {% if site_logo %}
+      <a href="{{ path('<front>') }}" rel="home" class="inline-flex shrink-0 items-center rounded-md ring-teal-600/30 transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2">
+        <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" fetchpriority="high" class="h-9 w-auto max-w-[200px] object-contain sm:h-11" />
+      </a>
+    {% endif %}
+    {% if site_name %}
+      <div class="flex min-w-0 flex-col leading-tight">
+        <a href="{{ path('<front>') }}" rel="home" class="truncate text-lg font-semibold tracking-tight text-slate-900 no-underline transition hover:text-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 sm:text-xl dark:text-white dark:hover:text-teal-200">
+          {{ site_name }}
+        </a>
+        {% if site_slogan %}
+          <p class="mt-0.5 max-w-md text-xs font-medium text-slate-500 sm:text-sm dark:text-slate-400">
+            {{ site_slogan }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

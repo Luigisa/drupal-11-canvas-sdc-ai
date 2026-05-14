@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Región footer: rejilla adaptable para bloques.
+ */
+#}
+{% if content %}
+  <div{{ attributes.addClass(
+    'region',
+    'region-footer',
+    'grid',
+    'w-full',
+    'gap-10',
+    'sm:grid-cols-2',
+    'lg:grid-cols-12',
+    'lg:gap-8'
+  ) }}>
+    {{ content }}
+  </div>
+{% endif %}

@@ -1,0 +1,10 @@
+uuid: 91006d01-f9f8-41ec-a3aa-0f3a07ba985e
+langcode: en
+status: true
+dependencies: {  }
+name: Other
+configEntityTypeId: component
+weight: 0
+items:
+  - sdc.museothyssen.hello
+  - sdc.olivero.teaser

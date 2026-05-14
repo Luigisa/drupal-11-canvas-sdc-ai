@@ -1,0 +1,23 @@
+uuid: 293c5946-4b85-4949-bb20-9a6d80284aaa
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - museothyssen
+_core:
+  default_config_hash: pbbed0hdqGDF-_QWVVTWRAwgDIotFuAvWH5mWUZu0fA
+id: museothyssen_search_form_wide
+theme: museothyssen
+region: header
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

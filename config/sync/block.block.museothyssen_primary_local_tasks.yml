@@ -1,0 +1,22 @@
+uuid: d7989fd0-7b3e-443b-90a2-6ff0f99b5684
+langcode: en
+status: true
+dependencies:
+  theme:
+    - museothyssen
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: museothyssen_primary_local_tasks
+theme: museothyssen
+region: highlighted
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

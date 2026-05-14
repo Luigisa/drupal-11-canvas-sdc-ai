@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Región header: branding + bloques auxiliares.
+ */
+#}
+{% if content %}
+  <div{{ attributes.addClass(
+    'region',
+    'region-header',
+    'flex',
+    'w-full',
+    'min-w-0',
+    'flex-wrap',
+    'items-center',
+    'justify-between',
+    'gap-4'
+  ) }}>
+    {{ content }}
+  </div>
+{% endif %}

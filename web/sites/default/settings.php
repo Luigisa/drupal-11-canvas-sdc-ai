@@ -258,7 +258,8 @@ $databases = [];
  * directory in the public files path. The setting below allows you to set
  * its location.
  */
-# $settings['config_sync_directory'] = '/directory/outside/webroot';
+// Raíz del proyecto (Composer: docroot = web/). Export/import Drush van aquí.
+$settings['config_sync_directory'] = dirname(DRUPAL_ROOT) . '/config/sync';
 
 /**
  * Settings:

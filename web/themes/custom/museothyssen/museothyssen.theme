@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Funciones de tema Museo Thyssen.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_preprocess_HOOK() for block.
+ */
+function museothyssen_preprocess_block(array &$variables): void {
+  if (empty($variables['elements']['#id'])) {
+    return;
+  }
+
+  /** @var \Drupal\block\BlockInterface|null $block */
+  $block = \Drupal::entityTypeManager()->getStorage('block')->load($variables['elements']['#id']);
+  if (!$block) {
+    return;
+  }
+
+  $region = $block->getRegion();
+
+  if (($variables['base_plugin_id'] ?? '') === 'system_menu_block' && isset($variables['content']) && is_array($variables['content'])) {
+    $variables['content']['#attributes']['region'] = $region;
+  }
+
+  if (($variables['plugin_id'] ?? '') === 'system_branding_block') {
+    $variables['attributes']->addClass(
+      'site-branding',
+      'flex',
+      'min-w-0',
+      'flex-wrap',
+      'items-center',
+      'gap-3',
+      'sm:gap-4'
+    );
+  }
+
+  if ($region === 'footer') {
+    $variables['attributes']->addClass('min-w-0', 'lg:col-span-3');
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu.
+ */
+function museothyssen_preprocess_menu(array &$variables): void {
+  $region = $variables['attributes']['region'] ?? NULL;
+  $variables['menu_layout'] = match ($region) {
+    'footer' => 'footer',
+    'primary_menu' => 'primary',
+    'header' => 'header',
+    default => 'default',
+  };
+  if ($region !== NULL) {
+    unset($variables['attributes']['region']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for page.
+ */
+function museothyssen_preprocess_page(array &$variables): void {
+  $variables['site_name'] = (string) \Drupal::config('system.site')->get('name');
+  $variables['current_year'] = (string) (int) date('Y');
+}
