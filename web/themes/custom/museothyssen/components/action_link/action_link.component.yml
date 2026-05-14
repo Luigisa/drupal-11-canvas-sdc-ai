@@ -1,0 +1,34 @@
+# This is so your IDE knows about the syntax for fixes and autocomplete.
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+
+name: Action link
+status: stable
+noUi: true
+description: |
+  Átomo CTA/enlace (pill). Reutilizable vía {% include 'museothyssen:action_link' %}.
+
+props:
+  type: object
+  required:
+    - attributes
+    - url
+    - label
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: Atributos del elemento anchor (clases extra, aria, etc.).
+    url:
+      type: string
+      format: uri-reference
+      title: URL
+      description: Destino del enlace (rutas relativas, https, tel, etc.).
+      examples:
+        - tel:900651324
+        - /contacto
+    label:
+      type: string
+      title: Label
+      description: Texto visible del CTA.
+      examples:
+        - Llámanos gratis al 900 651 324

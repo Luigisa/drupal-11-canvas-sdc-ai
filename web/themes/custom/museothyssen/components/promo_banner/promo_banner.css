@@ -1,0 +1,9 @@
+/**
+ * @file
+ * Estilos mínimos del promo banner (SDC adjunta esta hoja automáticamente).
+ */
+
+.museothyssen-promo-banner__figure img {
+  display: block;
+  vertical-align: middle;
+}

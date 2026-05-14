@@ -1,4 +1,4 @@
-uuid: dff00045-8a9f-4b83-92a4-143d6648410c
+uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
-id: node.field_hello
-field_name: field_hello
+id: node.field_components
+field_name: field_components
 entity_type: node
 type: entity_reference_revisions
 settings:

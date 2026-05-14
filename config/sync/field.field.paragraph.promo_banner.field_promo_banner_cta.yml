@@ -1,0 +1,23 @@
+uuid: 6047cf10-7541-483a-9d9a-31186408caca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promo_banner_cta
+    - paragraphs.paragraphs_type.promo_banner
+  module:
+    - link
+id: paragraph.promo_banner.field_promo_banner_cta
+field_name: field_promo_banner_cta
+entity_type: paragraph
+bundle: promo_banner
+label: 'Call to action'
+description: 'URI del CTA (tel:, https:, rutas internas) y texto visible (props SDC link_url y link_label).'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

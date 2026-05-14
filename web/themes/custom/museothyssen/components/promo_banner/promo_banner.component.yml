@@ -1,0 +1,64 @@
+# This is so your IDE knows about the syntax for fixes and autocomplete.
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+
+name: Promo banner
+status: stable
+group: Museo Thyssen
+description: |
+  Banner promocional dos columnas (copy + imagen), estilo Caaalma DS Primary.
+
+libraryOverrides:
+  dependencies:
+    - canvas/image
+
+props:
+  type: object
+  required:
+    - title
+    - subtitle
+    - link_url
+    - link_label
+    - image
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      description: |
+        Opcional. Canvas no persiste este prop al guardar; si falta, Twig usa create_attribute({}).
+    title:
+      type: string
+      title: Title
+      description: Titular (Title-1 / 5xl).
+      examples:
+        - Aprovecha ahora tu fibra y móvil gratis hasta marzo.
+    subtitle:
+      type: string
+      title: Subtitle
+      description: Subtítulo (Title-6 / lg).
+      examples:
+        - AdamoTV con 130 canales, de regalo
+    link_url:
+      type: string
+      format: uri-reference
+      title: Link URL
+      description: Destino del CTA (tel, https, ruta relativa).
+      examples:
+        - tel:900651324
+        - /contacto
+    link_label:
+      type: string
+      title: Link label
+      description: Texto visible del CTA.
+      examples:
+        - Llámanos gratis al 900 651 324
+    image:
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      title: Image
+      description: |
+        Objeto Canvas (canvas:image) o render array de imagen en runtime.
+      examples:
+        - src: https://placehold.co/600x400
+          alt: Ilustración
+          width: 600
+          height: 400

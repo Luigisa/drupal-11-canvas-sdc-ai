@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Paragraph tipo Promo banner: delega en museothyssen:promo_banner.
+ */
+#}
+{%
+  set paragraph_classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+  ]
+%}
+{% include 'museothyssen:promo_banner' with {
+  attributes: attributes.addClass(paragraph_classes),
+  title: paragraph.field_promo_banner_title.value,
+  subtitle: paragraph.field_promo_banner_subtitle.value,
+  link_url: promo_banner_link_url,
+  link_label: promo_banner_link_label,
+  image: promo_banner_image,
+} only %}

@@ -1,19 +1,20 @@
-uuid: f6c3e61c-20e7-4b91-8420-0d1f4cb6c30c
+uuid: b2c3d4e5-f6a7-8901-bcde-f12345678901
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hello
+    - field.storage.node.field_components
     - node.type.page
     - paragraphs.paragraphs_type.hello
+    - paragraphs.paragraphs_type.promo_banner
   module:
     - entity_reference_revisions
-id: node.page.field_hello
-field_name: field_hello
+id: node.page.field_components
+field_name: field_components
 entity_type: node
 bundle: page
-label: Hello
-description: 'Bloques Hello (componente SDC).'
+label: Components
+description: 'Paragraphs Hello y Promo banner (SDC museothyssen).'
 required: false
 translatable: false
 default_value: {  }
@@ -23,9 +24,13 @@ settings:
   handler_settings:
     target_bundles:
       hello: hello
+      promo_banner: promo_banner
     negate: 0
     target_bundles_drag_drop:
       hello:
         weight: 0
+        enabled: true
+      promo_banner:
+        weight: 1
         enabled: true
 field_type: entity_reference_revisions

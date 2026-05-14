@@ -1,0 +1,43 @@
+uuid: ea3aa047-f29a-4fa2-9104-71abab584cfa
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+  theme:
+    - museothyssen
+active_version: a8133d0df17e87f5
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        url:
+          required: true
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value:
+            -
+              uri: 'tel:900651324'
+              options: {  }
+          expression: ℹ︎link␟url
+        label:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Llámanos gratis al 900 651 324'
+          expression: ℹ︎string␟value
+    fallback_metadata:
+      slot_definitions: {  }
+label: 'Action link'
+id: sdc.museothyssen.action_link
+provider: museothyssen
+source: sdc
+source_local_id: 'museothyssen:action_link'

@@ -1,0 +1,83 @@
+uuid: 2166cbc3-7e5a-40f1-bdc3-84a9e8f742fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+  module:
+    - file
+    - link
+    - media
+    - media_library
+  theme:
+    - museothyssen
+active_version: 8314f13878e90516
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        title:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Aprovecha ahora tu fibra y móvil gratis hasta marzo.'
+          expression: ℹ︎string␟value
+        subtitle:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'AdamoTV con 130 canales, de regalo'
+          expression: ℹ︎string␟value
+        link_url:
+          required: true
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value:
+            -
+              uri: 'tel:900651324'
+              options: {  }
+          expression: ℹ︎link␟url
+        link_label:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Llámanos gratis al 900 651 324'
+          expression: ℹ︎string␟value
+        image:
+          required: true
+          field_type: entity_reference
+          field_storage_settings:
+            target_type: media
+          field_instance_settings:
+            handler: 'default:media'
+            handler_settings:
+              target_bundles:
+                image: image
+          field_widget: media_library_widget
+          default_value: {  }
+          expression: 'ℹ︎entity_reference␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+    fallback_metadata:
+      slot_definitions: {  }
+label: 'Promo banner'
+id: sdc.museothyssen.promo_banner
+provider: museothyssen
+source: sdc
+source_local_id: 'museothyssen:promo_banner'

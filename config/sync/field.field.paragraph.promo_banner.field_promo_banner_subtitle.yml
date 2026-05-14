@@ -1,0 +1,19 @@
+uuid: 646b7c1e-7bf3-40f3-8e79-a7f78b40f884
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_promo_banner_subtitle
+    - paragraphs.paragraphs_type.promo_banner
+id: paragraph.promo_banner.field_promo_banner_subtitle
+field_name: field_promo_banner_subtitle
+entity_type: paragraph
+bundle: promo_banner
+label: Subtitle
+description: 'Subtítulo (prop SDC subtitle).'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

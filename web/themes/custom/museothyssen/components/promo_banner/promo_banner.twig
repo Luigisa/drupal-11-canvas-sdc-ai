@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Componente SDC: museothyssen:promo_banner (Caaalma DS — Hero Primary).
+ */
+#}
+{% set banner_attributes = attributes|default(create_attribute({})) %}
+<div{{ banner_attributes.addClass(
+  'museothyssen-promo-banner flex flex-col bg-[#2dc26e] text-[#010101] lg:flex-row lg:items-stretch'
+) }}>
+  <div class="museothyssen-promo-banner__copy flex flex-col justify-center gap-6 px-6 py-12 sm:px-10 sm:py-14 lg:w-[min(44rem,100%)] lg:max-w-[50%] lg:gap-10 lg:pl-[clamp(1.5rem,8vw,9rem)] lg:pr-12 xl:pl-36">
+    <div class="museothyssen-promo-banner__text flex flex-col gap-6">
+      {% if title %}
+        <h2 class="museothyssen-promo-banner__title font-sans text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-5xl">{{ title }}</h2>
+      {% endif %}
+      {% if subtitle %}
+        <p class="museothyssen-promo-banner__subtitle font-sans text-lg font-semibold leading-snug">{{ subtitle }}</p>
+      {% endif %}
+    </div>
+    {% if link_url and link_label %}
+      {% include 'museothyssen:action_link' with {
+        attributes: create_attribute({}),
+        url: link_url,
+        label: link_label,
+      } only %}
+    {% endif %}
+  </div>
+  <div class="museothyssen-promo-banner__media flex flex-1 flex-col justify-center px-6 pb-12 pt-0 sm:px-10 lg:px-12 lg:pb-14 lg:pl-6 lg:pr-[clamp(1.5rem,8vw,9rem)] xl:pr-36">
+    {% if image %}
+      <figure class="museothyssen-promo-banner__figure mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
+        {% if image is iterable and (
+          image['#theme'] is defined
+          or image['#type'] is defined
+          or image['#markup'] is defined
+          or image['#lazy_builder'] is defined
+        ) %}
+          <div class="museothyssen-promo-banner__image-build [&_img]:h-auto [&_img]:w-full [&_img]:max-h-[22rem] [&_img]:object-contain lg:[&_img]:max-h-none">
+            {{ image }}
+          </div>
+        {% elseif image.src is defined %}
+          {% include 'canvas:image' with image|merge({
+            alt: image.alt|default(title|default('')),
+            loading: image.loading|default('lazy'),
+            sizes: image.sizes|default('(max-width: 1024px) 100vw, 50vw'),
+            class: image.class|default('museothyssen-promo-banner__img h-auto w-full max-h-[22rem] object-contain lg:max-h-none'),
+            attributes: image.attributes is defined ? image.attributes : create_attribute({}),
+          })|filter((value) => value is not null) only %}
+        {% else %}
+          {% include 'canvas:image' with {
+            src: image,
+            alt: title|default(''),
+            loading: 'lazy',
+            sizes: '(max-width: 1024px) 100vw, 50vw',
+            class: 'museothyssen-promo-banner__img h-auto w-full max-h-[22rem] object-contain lg:max-h-none',
+            attributes: create_attribute({}),
+          } only %}
+        {% endif %}
+      </figure>
+    {% endif %}
+  </div>
+</div>

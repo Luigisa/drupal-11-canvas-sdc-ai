@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.field_hello
+    - field.field.node.page.field_components
     - node.type.page
   module:
     - entity_reference_revisions
@@ -24,7 +24,7 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-  field_hello:
+  field_components:
     type: entity_reference_revisions_entity_view
     label: hidden
     settings:

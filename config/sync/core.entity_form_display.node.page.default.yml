@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.field_hello
+    - field.field.node.page.field_components
     - node.type.page
   module:
     - paragraphs
@@ -27,17 +27,17 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  field_hello:
+  field_components:
     type: paragraphs
     weight: 31
     region: content
     settings:
-      title: Hello
-      title_plural: Hello
+      title: Component
+      title_plural: Components
       edit_mode: closed
-      add_mode: button
+      add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: hello
+      default_paragraph_type: _none
       features:
         add_above: '0'
         collapse_edit_all: collapse_edit_all

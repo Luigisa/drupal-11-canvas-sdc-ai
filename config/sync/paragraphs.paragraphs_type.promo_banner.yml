@@ -1,0 +1,10 @@
+uuid: 47a07e4b-ffe9-4b54-898d-3649eebe2a8a
+langcode: en
+status: true
+dependencies: {  }
+id: promo_banner
+label: 'Promo banner'
+icon_uuid: null
+icon_default: null
+description: 'Banner promocional (museothyssen:promo_banner): título, subtítulo, CTA e imagen Media.'
+behavior_plugins: {  }

@@ -361,6 +361,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/webp' => array(
+            'pretty_version' => '1.0.0-rc2',
+            'version' => '1.0.0.0-RC2',
+            'reference' => '8.x-1.0-rc2',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/webp',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drush/drush' => array(
             'pretty_version' => '13.7.3',
             'version' => '13.7.3.0',

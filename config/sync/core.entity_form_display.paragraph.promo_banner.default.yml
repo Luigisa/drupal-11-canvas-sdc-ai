@@ -1,0 +1,55 @@
+uuid: 469dae8e-34df-4fa6-96a0-60d1ce2c157b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.promo_banner.field_promo_banner_cta
+    - field.field.paragraph.promo_banner.field_promo_banner_media
+    - field.field.paragraph.promo_banner.field_promo_banner_subtitle
+    - field.field.paragraph.promo_banner.field_promo_banner_title
+    - media.type.image
+    - paragraphs.paragraphs_type.promo_banner
+  module:
+    - link
+    - media_library
+    - paragraphs
+id: paragraph.promo_banner.default
+targetEntityType: paragraph
+bundle: promo_banner
+mode: default
+content:
+  field_promo_banner_cta:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_promo_banner_media:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_promo_banner_subtitle:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_promo_banner_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
