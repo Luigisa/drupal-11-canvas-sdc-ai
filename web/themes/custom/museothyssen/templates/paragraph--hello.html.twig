@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Paragraph tipo Hello: delega en el SDC museothyssen:hello.
+ */
+#}
+{%
+  set paragraph_classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+  ]
+%}
+{% include 'museothyssen:hello' with {
+  attributes: attributes.addClass(paragraph_classes),
+  title: paragraph.field_hello_title.value,
+  subtitle: paragraph.field_hello_subtitle.value,
+  image: hello_image,
+} only %}

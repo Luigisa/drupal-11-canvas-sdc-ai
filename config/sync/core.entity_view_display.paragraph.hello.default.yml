@@ -1,0 +1,20 @@
+uuid: 1140e38f-bddd-4343-a797-16dace4228a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hello.field_hello_media
+    - field.field.paragraph.hello.field_hello_subtitle
+    - field.field.paragraph.hello.field_hello_title
+    - paragraphs.paragraphs_type.hello
+id: paragraph.hello.default
+targetEntityType: paragraph
+bundle: hello
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_hello_media: true
+  field_hello_subtitle: true
+  field_hello_title: true
+  uid: true

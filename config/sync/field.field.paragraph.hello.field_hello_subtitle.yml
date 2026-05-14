@@ -1,0 +1,19 @@
+uuid: 16e7103e-f925-438b-809d-92a0cb89f439
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hello_subtitle
+    - paragraphs.paragraphs_type.hello
+id: paragraph.hello.field_hello_subtitle
+field_name: field_hello_subtitle
+entity_type: paragraph
+bundle: hello
+label: Subtitle
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

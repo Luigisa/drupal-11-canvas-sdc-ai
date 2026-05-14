@@ -12,6 +12,11 @@ libraryOverrides:
 
 props:
   type: object
+  required:
+    - attributes
+    - title
+    - subtitle
+    - image
   properties:
     attributes:
       type: Drupal\Core\Template\Attribute
@@ -34,8 +39,8 @@ props:
       type: object
       title: Image
       description: |
-        Objeto forma Canvas (ver canvas:image): `src` obligatorio; `alt`, `width`, `height` opcionales.
-        Render array de campo Media/imagen: válido en runtime (misma rama Twig que antes).
+        Obligatorio en este componente. Objeto Canvas (canvas:image): `src` obligatorio.
+        Render array de Media/imagen: válido en runtime.
       examples:
         - src: https://placehold.co/600x400
           alt: Placeholder

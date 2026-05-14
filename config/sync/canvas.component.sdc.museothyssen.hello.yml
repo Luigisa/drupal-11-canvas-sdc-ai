@@ -12,9 +12,47 @@ dependencies:
     - media_library
   theme:
     - museothyssen
-active_version: 2ec9316460aa1683
+active_version: eaf611da739700c3
 versioned_properties:
   active:
+    settings:
+      prop_field_definitions:
+        title:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: Hello
+          expression: ℹ︎string␟value
+        subtitle:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Museo Thyssen-Bornemisza'
+          expression: ℹ︎string␟value
+        image:
+          required: true
+          field_type: entity_reference
+          field_storage_settings:
+            target_type: media
+          field_instance_settings:
+            handler: 'default:media'
+            handler_settings:
+              target_bundles:
+                image: image
+          field_widget: media_library_widget
+          default_value: {  }
+          expression: 'ℹ︎entity_reference␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+    fallback_metadata:
+      slot_definitions: {  }
+  2ec9316460aa1683:
     settings:
       prop_field_definitions:
         title:

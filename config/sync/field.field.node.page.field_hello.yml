@@ -1,0 +1,31 @@
+uuid: f6c3e61c-20e7-4b91-8420-0d1f4cb6c30c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hello
+    - node.type.page
+    - paragraphs.paragraphs_type.hello
+  module:
+    - entity_reference_revisions
+id: node.page.field_hello
+field_name: field_hello
+entity_type: node
+bundle: page
+label: Hello
+description: 'Bloques Hello (componente SDC).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hello: hello
+    negate: 0
+    target_bundles_drag_drop:
+      hello:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions
