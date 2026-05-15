@@ -15,9 +15,9 @@ alwaysApply: false
 
 | Capa | Archivos | Responsabilidad |
 |------|----------|-----------------|
-| **SDC** | `components/{name}/{name}.twig` | Markup, clases Tailwind, composición de otros SDC |
+| **SDC** | `components/{tier}/{name}/{name}.twig` (`tier`: `atoms` \| `molecules` \| `organisms`) | Markup, clases Tailwind, composición de otros SDC |
 | **Schema** | `{name}.component.yml` | Props, ejemplos, Storybook, dependencias de librería |
-| **Behavior** | `components/{name}/js/{name}.ts` | DOM, eventos, ARIA (solo si hace falta JS) |
+| **Behavior** | `components/{tier}/{name}/js/{name}.ts` | DOM, eventos, ARIA (solo si hace falta JS) |
 | **Layout** | `templates/**/*.twig` | Regiones, páginas, grids — no estilos de átomos |
 
 ## Twig: extraer en lugar de anidar

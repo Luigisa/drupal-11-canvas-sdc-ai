@@ -75,7 +75,7 @@ Todo JS del theme que toque el DOM:
 - **Clave `once` única** por behavior (prefijo `museothyssen-`).
 - **Selector acotado** al root del componente (clase BEM `museothyssen-*`).
 - **Dependencias** en `{component}.component.yml`: `core/drupal`, `core/once` (y las que aplique).
-- **Lógica global mínima** en `js/main.ts`; el resto en `components/{name}/js/{name}.ts`.
+- **Lógica global mínima** en `js/main.ts`; el resto en `components/{tier}/{name}/js/{name}.ts`.
 
 ## Imports
 

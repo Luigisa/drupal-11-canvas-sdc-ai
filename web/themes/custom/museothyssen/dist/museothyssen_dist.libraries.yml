@@ -1,22 +1,8 @@
-js__main:
-  header: true
-  js:
-    https://drupal-sdc.ddev.site:5173/js/main.ts:
-      type: external
-      preprocess: false
-      noquery: true
-      minified: true
-      attributes:
-        type: module
-        crossorigin: {}
-  dependencies:
-    - core/once
-    - core/drupal
 css__global:
   header: true
   css:
     base:
-      https://drupal-sdc.ddev.site:5173/css/global.css:
+      /themes/custom/museothyssen/dist/css/global.DPfO_4qz.css:
         type: external
         preprocess: false
         noquery: true
@@ -25,30 +11,42 @@ css__tailwind:
   header: true
   css:
     base:
-      https://drupal-sdc.ddev.site:5173/css/tailwind.css:
+      /themes/custom/museothyssen/dist/css/tailwind.CDRQ29VO.css:
         type: external
         preprocess: false
         noquery: true
         attributes:
           crossorigin: anonymous
-sdc--hello:
+js__main:
   header: true
   js:
-    https://drupal-sdc.ddev.site:5173/components/hello/js/hello.ts:
-      type: external
+    /themes/custom/museothyssen/dist/js/main.-PDg_DEW.js:
+      type: file
       preprocess: false
       noquery: true
       minified: true
       attributes:
         type: module
         crossorigin: {}
-  dependencies:
-    - core/once
-    - core/drupal
-vite:
+sdc--hello:
   header: true
   js:
-    https://drupal-sdc.ddev.site:5173/@vite/client:
-      type: external
+    /themes/custom/museothyssen/dist/components/organisms/hello/js/hello.-e4jALgP.js:
+      type: file
+      preprocess: false
+      noquery: true
+      minified: true
       attributes:
         type: module
+        crossorigin: {}
+js__pokemon-api-client:
+  header: true
+  js:
+    /themes/custom/museothyssen/dist/js/services/pokemon-api-client.DbzdvYnQ.js:
+      type: file
+      preprocess: false
+      noquery: true
+      minified: true
+      attributes:
+        type: module
+        crossorigin: {}

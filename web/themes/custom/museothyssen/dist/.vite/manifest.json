@@ -7,11 +7,14 @@
     "file": "museothyssen_dist.info.yml",
     "src": "_museothyssen_dist.info.yml"
   },
-  "components/hello/js/hello.ts": {
-    "file": "components/hello/js/hello.DSoftL0Z.js",
+  "components/organisms/hello/js/hello.ts": {
+    "file": "components/organisms/hello/js/hello.-e4jALgP.js",
     "name": "hello",
-    "src": "components/hello/js/hello.ts",
-    "isEntry": true
+    "src": "components/organisms/hello/js/hello.ts",
+    "isEntry": true,
+    "imports": [
+      "js/services/pokemon-api-client.ts"
+    ]
   },
   "css/global.css": {
     "file": "css/global.DPfO_4qz.css",
@@ -19,7 +22,7 @@
     "isEntry": true
   },
   "css/tailwind.css": {
-    "file": "css/tailwind.2yoLp4A9.css",
+    "file": "css/tailwind.CDRQ29VO.css",
     "src": "css/tailwind.css",
     "isEntry": true
   },
@@ -27,6 +30,12 @@
     "file": "js/main.-PDg_DEW.js",
     "name": "main",
     "src": "js/main.ts",
+    "isEntry": true
+  },
+  "js/services/pokemon-api-client.ts": {
+    "file": "js/services/pokemon-api-client.DbzdvYnQ.js",
+    "name": "pokemon-api-client",
+    "src": "js/services/pokemon-api-client.ts",
     "isEntry": true
   }
 }

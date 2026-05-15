@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 third_party_settings:
   paragraphs_browser:
-    image_path: themes/custom/museothyssen/components/hello/image.png
+    image_path: themes/custom/museothyssen/components/organisms/hello/image.png
 id: hello
 label: Hello
 icon_uuid: null

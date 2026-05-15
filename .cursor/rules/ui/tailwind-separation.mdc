@@ -57,7 +57,7 @@ Tras añadir rutas nuevas de templates, actualizar `@source` si hace falta.
 
 ## CSS por componente
 
-`components/{name}/{name}.css` — Drupal lo adjunta con el SDC. Usar para lo que Tailwind no cubra o para capas `@layer components` locales si el equipo lo define.
+`components/{tier}/{name}/{name}.css` — Drupal lo adjunta con el SDC. Usar para lo que Tailwind no cubra o para capas `@layer components` locales si el equipo lo define.
 
 ## Salida compilada
 

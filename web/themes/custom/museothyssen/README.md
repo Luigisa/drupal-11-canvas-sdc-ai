@@ -13,12 +13,13 @@ ddev restart
 
 ## Estructura
 
+SDC agrupados por **atomic design** (el ID del componente sigue siendo `museothyssen:{nombre}`; solo cambia la ruta en disco):
+
 ```
-components/{nombre}/
-  {nombre}.component.yml
-  {nombre}.twig
-  {nombre}.css          # CSS del SDC (auto-adjunto por Drupal core)
-  js/{nombre}.ts        # TypeScript → compilado a dist/
+components/
+  atoms/{nombre}/          # {nombre}.component.yml, .twig, .css, js/…
+  molecules/{nombre}/
+  organisms/{nombre}/
 
 js/
   main.ts               # Behaviors globales (fino)
@@ -58,7 +59,7 @@ Todo JS interactivo usa `Drupal.behaviors` + `once()` (compatible con BigPipe, A
 })(Drupal, once);
 ```
 
-Ejemplo: [`components/hello/js/hello.ts`](components/hello/js/hello.ts).
+Ejemplo: [`components/organisms/hello/js/hello.ts`](components/organisms/hello/js/hello.ts).
 
 ## Comandos (DDEV + Bun)
 
@@ -124,6 +125,8 @@ El **sitio Drupal** (páginas reales) usa **https://TU_PROYECTO.ddev.site** con 
 
 **HMR:** Twig, CSS de componente y TS de behaviors se recargan al guardar.
 
+**Anidación `atoms/` / `molecules/` / `organisms/`:** Vite puede emitir imports Twig como `/components/...`; en `.storybook/main.ts` el plugin `museothyssen-storybook-root-twig` las re-mapea al disco. Tras `bun install`, `postinstall` parchea `storybook-addon-sdc` para que `data-component-id` sea `museothyssen:{nombre}` (no `museothyssen:atoms/{nombre}`).
+
 **Limitación:** render arrays de imagen (`#theme`, etc.) no existen en Storybook; usar props objeto con `src` / `examples` o variantes en `sdcStorybook`.
 
 **Una sola terminal** (Vite + Storybook):
@@ -147,7 +150,7 @@ ddev drush generate single-directory-component
 
 Con interacción:
 
-1. Añadir `components/{nombre}/js/{nombre}.ts` con un behavior (si hay interactividad).
+1. Añadir `components/{atoms|molecules|organisms}/{nombre}/js/{nombre}.ts` con un behavior (si hay interactividad).
 2. En `{nombre}.component.yml`, `libraryOverrides.dependencies`: `core/drupal`, `core/once` (y otras que necesites).
 3. Añadir `thirdPartySettings.sdcStorybook` con `examples` en props y variantes opcionales; comprobar en `ddev storybook`.
 4. `ddev bun run build` — genera `dist/...` y la librería `museothyssen_dist/sdc--{nombre}`.

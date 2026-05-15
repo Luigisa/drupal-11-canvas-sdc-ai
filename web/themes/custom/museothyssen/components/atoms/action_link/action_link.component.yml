@@ -3,9 +3,9 @@ $schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schema
 
 name: Action link
 status: stable
+group: atoms
 noUi: true
-description: |
-  Átomo CTA/enlace (pill). Reutilizable vía {% include 'museothyssen:action_link' %}.
+description: Átomo CTA/enlace (pill). Reutilizable vía {% include 'museothyssen:action_link' %}.
 
 thirdPartySettings:
   sdcStorybook:

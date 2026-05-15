@@ -8,4 +8,3 @@ hidden: true
 libraries:
   - museothyssen_dist/css__tailwind
   - museothyssen_dist/js__main
-  - museothyssen_dist/css__gin-custom

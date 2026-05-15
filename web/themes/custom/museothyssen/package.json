@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "bun@1.3.14",
   "scripts": {
-    "postinstall": "uebertool",
+    "postinstall": "uebertool && node scripts/patch-storybook-sdc-nested.mjs",
     "dev": "vite",
     "watch": "vite",
     "build": "vite build && bun scripts/postbuild.mjs",

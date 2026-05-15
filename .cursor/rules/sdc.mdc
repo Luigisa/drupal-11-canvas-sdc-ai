@@ -13,6 +13,8 @@ Tenemos una utilidad en el proyecto que se llama "generate single-directory-comp
 
 ddev drush generate single-directory-component
 
+Coloca la carpeta generada bajo `components/atoms/`, `components/molecules/` o `components/organisms/` según atomic design (el ID `museothyssen:{nombre}` no incluye la capa).
+
 Tras generar o editar un SDC:
 
 1. Rellenar `props` con `examples` / `default` en `{nombre}.component.yml`.

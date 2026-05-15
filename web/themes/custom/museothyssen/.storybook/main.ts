@@ -60,7 +60,26 @@ const config: StorybookConfig = {
     });
 
     return mergeConfig(config, {
-      plugins: [tailwindcss()],
+      plugins: [
+        {
+          name: 'museothyssen-storybook-root-twig',
+          enforce: 'pre',
+          resolveId(source: string) {
+            const q = source.indexOf('?');
+            const bare = q === -1 ? source : source.slice(0, q);
+            const query = q === -1 ? '' : source.slice(q);
+            if (!bare.endsWith('.twig')) {
+              return null;
+            }
+            // Vite emite imports absolutos /components/...; el resolver de twing espera ruta en disco.
+            if (bare.startsWith('/components/')) {
+              return path.join(themeRoot, bare.slice(1)) + query;
+            }
+            return null;
+          },
+        },
+        tailwindcss(),
+      ],
       server: viteServerForDdev(6006),
       resolve: {
         alias: {
