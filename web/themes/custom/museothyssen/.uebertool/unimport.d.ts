@@ -295,7 +295,7 @@ declare global {
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
-  export type { PokemonApiClient } from '/var/www/html/web/themes/custom/museothyssen/js/services/pokemon-api-client'
+  export type { PokemonRequestInit, PokemonApiClient } from '/var/www/html/web/themes/custom/museothyssen/js/services/pokemon-api-client'
   import('/var/www/html/web/themes/custom/museothyssen/js/services/pokemon-api-client')
 }
 // for vue template auto import

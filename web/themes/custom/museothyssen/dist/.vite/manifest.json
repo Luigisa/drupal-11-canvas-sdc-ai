@@ -8,7 +8,7 @@
     "src": "_museothyssen_dist.info.yml"
   },
   "components/organisms/hello/js/hello.ts": {
-    "file": "components/organisms/hello/js/hello.-e4jALgP.js",
+    "file": "components/organisms/hello/js/hello.DwDMuD0R.js",
     "name": "hello",
     "src": "components/organisms/hello/js/hello.ts",
     "isEntry": true,
@@ -33,7 +33,7 @@
     "isEntry": true
   },
   "js/services/pokemon-api-client.ts": {
-    "file": "js/services/pokemon-api-client.DbzdvYnQ.js",
+    "file": "js/services/pokemon-api-client.BKqnJ3Vy.js",
     "name": "pokemon-api-client",
     "src": "js/services/pokemon-api-client.ts",
     "isEntry": true

@@ -1,0 +1,1 @@
+const a="https://pokeapi.co/api/v2";function p(t){return{async getPokemonByName(e,s){const n=`${t}/pokemon/${encodeURIComponent(e)}`,o=await fetch(n,{signal:s?.signal});if(!o.ok)throw new Error(`PokéAPI ${o.status} ${o.statusText}: ${n}`);return o.json()}}}const r=p(a);export{r as p};
