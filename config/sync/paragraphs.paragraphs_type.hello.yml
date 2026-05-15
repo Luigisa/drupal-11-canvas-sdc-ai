@@ -2,6 +2,9 @@ uuid: 41d1de90-e50f-47d2-a93c-9caf29dae5e0
 langcode: en
 status: true
 dependencies: {  }
+third_party_settings:
+  paragraphs_browser:
+    image_path: 'public://paragraphs_browser/hello.png'
 id: hello
 label: Hello
 icon_uuid: null

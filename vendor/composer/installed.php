@@ -352,6 +352,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/paragraphs_browser' => array(
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => '8.x-1.3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/paragraphs_browser',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/recommended-project' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
