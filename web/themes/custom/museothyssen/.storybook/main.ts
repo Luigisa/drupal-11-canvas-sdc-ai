@@ -49,11 +49,9 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import('vite');
     const tailwindcss = (await import('@tailwindcss/vite')).default;
 
-    const storybookOrigin = process.env.DDEV_PRIMARY_URL_WITHOUT_PORT
-      ? `${process.env.DDEV_PRIMARY_URL_WITHOUT_PORT}:6006/`
-      : '/';
-
-    const plugins = (config.plugins ?? []).filter((plugin) => {
+    // No re-spread config.plugins en mergeConfig: Vite concatena arrays → plugins
+    // de Storybook duplicados → transformIndexHtml doble → /@id/__x00__ duplicado.
+    config.plugins = (config.plugins ?? []).filter((plugin) => {
       if (!plugin || typeof plugin !== 'object') {
         return true;
       }
@@ -62,8 +60,7 @@ const config: StorybookConfig = {
     });
 
     return mergeConfig(config, {
-      base: storybookOrigin,
-      plugins: [...plugins, tailwindcss()],
+      plugins: [tailwindcss()],
       server: viteServerForDdev(6006),
       resolve: {
         alias: {

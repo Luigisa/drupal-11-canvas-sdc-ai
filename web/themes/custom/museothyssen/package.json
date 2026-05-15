@@ -9,7 +9,7 @@
     "watch": "vite",
     "build": "vite build && bun scripts/postbuild.mjs",
     "typecheck": "tsc --noEmit",
-    "storybook": "STORYBOOK=true storybook dev -p 6006 --no-open",
+    "storybook": "STORYBOOK=true storybook dev -p 6006 --no-open --host 0.0.0.0",
     "front:dev": "concurrently -k -n vite,storybook -c blue,magenta \"bun run dev\" \"STORYBOOK=true bun run storybook\"",
     "build-storybook": "storybook build",
     "storybook:typecheck": "tsc --noEmit -p .storybook/tsconfig.json"

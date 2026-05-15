@@ -1,3 +1,17 @@
+js__main:
+  header: true
+  js:
+    https://drupal-sdc.ddev.site:5173/js/main.ts:
+      type: external
+      preprocess: false
+      noquery: true
+      minified: true
+      attributes:
+        type: module
+        crossorigin: {}
+  dependencies:
+    - core/once
+    - core/drupal
 css__global:
   header: true
   css:
@@ -17,20 +31,6 @@ css__tailwind:
         noquery: true
         attributes:
           crossorigin: anonymous
-js__main:
-  header: true
-  js:
-    https://drupal-sdc.ddev.site:5173/js/main.ts:
-      type: external
-      preprocess: false
-      noquery: true
-      minified: true
-      attributes:
-        type: module
-        crossorigin: {}
-  dependencies:
-    - core/once
-    - core/drupal
 sdc--hello:
   header: true
   js:
