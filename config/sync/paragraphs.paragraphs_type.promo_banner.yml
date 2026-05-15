@@ -1,7 +1,12 @@
 uuid: 47a07e4b-ffe9-4b54-898d-3649eebe2a8a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_browser
+third_party_settings:
+  paragraphs_browser:
+    image_path: themes/custom/museothyssen/components/promo_banner/image.png
 id: promo_banner
 label: 'Promo banner'
 icon_uuid: null
