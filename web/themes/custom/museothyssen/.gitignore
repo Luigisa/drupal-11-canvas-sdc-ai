@@ -1,0 +1,5 @@
+node_modules/
+storybook-static/
+# Lockfile: bun.lock (commitear). No usar package-lock.json.
+# Generado por Vite en cada build (salida canónica en dist/css/).
+css/global.css

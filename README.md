@@ -76,15 +76,27 @@ Tras eso suele bastar `config:import` solo si el código y el volcado han diverg
 
 Correo de prueba: [Mailpit](https://ddev.readthedocs.io/en/stable/users/usage/developer-tools/#email-capture-and-review-mailpit) en la URL que indica `ddev describe` (típicamente `https://drupal-sdc.ddev.site:8026`).
 
-## Tema `museothyssen` (Tailwind / npm)
+## Tema `museothyssen` (Tailwind / Bun)
 
-El CSS del tema custom se construye con Node; en este proyecto DDEV expone Node en el contenedor web. Detalle de comandos: [web/themes/custom/museothyssen/README.md](web/themes/custom/museothyssen/README.md).
+El frontend del tema custom usa **Bun** + Vite en el contenedor DDEV (add-on [ddev-bun](https://addons.ddev.com/addons/OpenForgeProject/ddev-bun)). Detalle: [web/themes/custom/museothyssen/README.md](web/themes/custom/museothyssen/README.md).
 
-Ejemplo desde la raíz del proyecto:
+Primera vez en el proyecto:
 
 ```bash
-ddev exec bash -lc "cd web/themes/custom/museothyssen && npm ci && npm run build"
+ddev add-on get OpenForgeProject/ddev-bun
+ddev restart
 ```
+
+Build y Storybook (Bun en el theme):
+
+```bash
+ddev bun install --cwd=web/themes/custom/museothyssen
+ddev exec bash -lc "cd web/themes/custom/museothyssen && bun run build"
+ddev front dev     # Vite :5173 + Storybook :6006 (front SDC)
+ddev storybook     # solo Storybook
+```
+
+Detalle Vite (:5173), Storybook (:6006) y flujo SDC: [web/themes/custom/museothyssen/README.md](web/themes/custom/museothyssen/README.md).
 
 ## Notas
 

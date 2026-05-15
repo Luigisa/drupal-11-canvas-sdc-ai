@@ -1,0 +1,92 @@
+---
+description: Variantes de componentes SDC vía schema YAML y Storybook, no tailwind-variants
+globs:
+  - web/themes/custom/museothyssen/**/*.component.yml
+  - web/themes/custom/museothyssen/**/*.twig
+alwaysApply: false
+---
+
+# Variantes en museothyssen
+
+**No usamos `tailwind-variants` ni `createVariants`.** Las variantes se modelan con:
+
+1. **Props** en `{name}.component.yml` (JSON Schema).
+2. **Ramas Twig** acotadas según props (pocas, con early `{% if %}`).
+3. **Stories** en `thirdPartySettings.sdcStorybook` para Storybook.
+
+## 1. Definir props y ejemplos
+
+```yaml
+props:
+  type: object
+  properties:
+    variant:
+      type: string
+      enum: [primary, secondary]
+      default: primary
+      examples: [primary]
+    label:
+      type: string
+      examples: ['Ver exposición']
+```
+
+## 2. Mapear variant → clases en Twig
+
+Preferir `{% set %}` al inicio del template, no ternarios anidados en `addClass`:
+
+```twig
+{% set variant_classes = {
+  primary: 'bg-[#010101] text-white border-[#010101]',
+  secondary: 'bg-white text-[#010101] border-[#010101]',
+} %}
+{% set tone = variant|default('primary') %}
+
+<a href="{{ url }}"{{ attributes.addClass(
+  'museothyssen-action-link inline-flex ...',
+  variant_classes[tone],
+) }}>{{ label }}</a>
+```
+
+Si la variante no existe en el mapa, usar `default` en Twig: `variant_classes[tone] ?? variant_classes.primary`.
+
+## 3. Storybook por variante
+
+```yaml
+thirdPartySettings:
+  sdcStorybook:
+    tags: [autodocs]
+    stories:
+      secondary:
+        props:
+          variant: secondary
+          label: Más información
+          url: /info
+```
+
+Verificar en `ddev storybook` antes de integrar en Drupal.
+
+## 4. Variantes visuales vs datos
+
+| Tipo | Dónde | Ejemplo |
+|------|-------|---------|
+| Visual (color, tamaño) | Prop `variant` + mapa de clases | `action_link` primary/secondary |
+| Contenido | Props de contenido | `title`, `image`, `link_url` |
+| Estado JS | `data-*` + behavior | `data-hello-toggle`, `toggleDataState` |
+
+No duplicar archivos `.twig` por variante salvo que el markup sea **estructuralmente distinto**.
+
+## Composición
+
+Variantes complejas = SDC hijo (`museothyssen:action_link`) o nuevo SDC, no copiar bloques de 40 líneas.
+
+## Dependencias por variante
+
+Si una variante necesita otra librería (p. ej. `canvas/image`):
+
+```yaml
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once
+    - canvas/image
+```

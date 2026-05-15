@@ -1,0 +1,65 @@
+---
+description: Organización de clases Tailwind v4 en Twig y CSS del theme museothyssen
+globs:
+  - web/themes/custom/museothyssen/**/*.twig
+  - web/themes/custom/museothyssen/**/*.css
+  - web/themes/custom/museothyssen/css/tailwind.css
+alwaysApply: false
+---
+
+# Tailwind en museothyssen
+
+**No hay `cn()` ni React** en este theme. Las clases van en:
+
+1. **Twig** — `attributes.addClass('...', '...')` con varias cadenas (una línea por grupo lógico).
+2. **`{component}.css`** en la raíz del SDC — estilos que no encajan en utilidades o variantes Drupal.
+3. **`css/tailwind.css`** — `@import "tailwindcss"`, `@source`, capa `@layer base` (tipografía de `.layout-content`).
+
+El build escanea vía `@source` en `css/tailwind.css`:
+
+```css
+@source "../templates/**/*.twig";
+@source "../components/**/*.twig";
+@source "../components/**/*.css";
+```
+
+Tras añadir rutas nuevas de templates, actualizar `@source` si hace falta.
+
+## Orden de grupos (en cada cadena o línea de `addClass`)
+
+1. **Posicionamiento** — `relative`, `absolute`, `z-*`, `inset-*`
+2. **Tamaño** — `w-*`, `h-*`, `min-*`, `max-*`
+3. **Espaciado** — `p-*`, `m-*`, `gap-*`
+4. **Tipografía** — `font-*`, `text-*`, `leading-*`, `tracking-*`
+5. **Apariencia** — `bg-*`, `border-*`, `rounded-*`, `shadow-*`, `text-*` de color
+6. **Transiciones** — `transition-*`, `duration-*`
+7. **Responsive** — prefijos `sm:`, `md:`, `lg:` junto a la utilidad base en la misma cadena
+8. **Estado / modificadores** — `hover:`, `focus-visible:`, `data-*:` si se usan
+9. **Clases Drupal** — lo que venga de `attributes.class` (no sobrescribir sin motivo)
+
+## Ejemplo Twig (patrón del repo)
+
+```twig
+<a href="{{ url }}"{{ attributes.addClass(
+  'museothyssen-action-link inline-flex h-[52px] shrink-0 items-center justify-center',
+  'rounded-full border border-solid border-[#010101] bg-[#010101] px-6 py-4',
+  'text-center text-base font-semibold leading-none text-white no-underline',
+  'transition-opacity hover:opacity-90',
+  'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#010101]',
+) }}>{{ label }}</a>
+```
+
+## Tokens y colores de diseño
+
+- Valores de **Figma / Caaalma** pueden ir como hex en utilidades (`bg-[#2dc26e]`) hasta existir tokens en `@theme`.
+- Selectores arbitrarios para hijos de render arrays Drupal: `[&_img]:w-full`, `[&_img]:object-cover`.
+- Estilos de **prose del contenido editorial** → `@layer base` en `css/tailwind.css` bajo `.layout-content`, no en cada SDC.
+
+## CSS por componente
+
+`components/{name}/{name}.css` — Drupal lo adjunta con el SDC. Usar para lo que Tailwind no cubra o para capas `@layer components` locales si el equipo lo define.
+
+## Salida compilada
+
+- Dev: Vite (`ddev bun run dev`) → HMR.
+- Prod: `dist/css/tailwind.*.css` vía `museothyssen_dist` — commitear `dist/` según política del README del theme.

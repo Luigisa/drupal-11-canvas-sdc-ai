@@ -1034,5 +1034,14 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'ueberbit/uebertool_companion' => array(
+            'pretty_version' => '0.8.1',
+            'version' => '0.8.1.0',
+            'reference' => '303de93a554383fde13ed332b26f637c056e2156',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/uebertool_companion',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
     ),
 );

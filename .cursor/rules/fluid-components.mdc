@@ -1,0 +1,65 @@
+---
+description: Componentes SDC fluidos — el contenedor define el tamaño, no el átomo
+globs:
+  - web/themes/custom/museothyssen/components/**/*.twig
+  - web/themes/custom/museothyssen/templates/**/*.twig
+alwaysApply: false
+---
+
+# Componentes fluidos — museothyssen
+
+## Principio
+
+**Los SDC son fluidos por defecto.** El layout (plantilla de región, página, paragraph wrapper o grid padre) define `max-width`, columnas y `gap`. El componente define estructura interna, padding y estilo — no anchos fijos salvo excepciones.
+
+Los contenedores block en Twig (`div`, `article`, `section`) ya ocupan el ancho del padre. No añadir `w-full` por defecto.
+
+## Responsabilidades
+
+| Capa | Ubicación | Define | No define |
+|------|-----------|--------|-----------|
+| **SDC** | `components/*/*.twig` | Estructura interna, padding, tipografía del bloque | `max-w-*` de página, columnas del sitio |
+| **Layout theme** | `templates/region--*.twig`, `page.html.twig` | Contenedor, grid/flex, `gap` | Estilos internos del promo/hero |
+| **Paragraph / block** | `templates/paragraphs/`, `templates/block/` | Wrapper Drupal, clases de espaciado entre bloques | Duplicar markup del SDC |
+
+## ✅ Correcto
+
+```twig
+{# SDC fluido — sin ancho fijo en el root #}
+<article{{ attributes.addClass('museothyssen-card rounded-xl bg-white p-6') }}>
+  {{ content }}
+</article>
+```
+
+```twig
+{# Layout define distribución #}
+<div class="layout-content mx-auto max-w-6xl px-6">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+    {% for card in cards %}
+      {{ card }}
+    {% endfor %}
+  </div>
+</div>
+```
+
+`promo_banner` usa `lg:max-w-[50%]` en la **columna de copy**, no en el root del banner — patrón válido para split hero, no para átomos genéricos.
+
+## ❌ Incorrecto
+
+```twig
+{# Ancho fijo en un átomo reutilizable #}
+<article class="w-[350px] ...">
+
+{# Redundante #}
+<div class="w-full">
+```
+
+## Excepciones
+
+- **Iconos / media decorativa**: tamaños fijos o `max-h-*` para proporción.
+- **CTA inline** (`action_link`): `shrink-0`, `inline-flex`, altura fija de diseño (`h-[52px]`).
+- **Imágenes**: `object-cover` / `max-h-*` en la figura, no en el wrapper de página.
+
+## Tailwind
+
+Las utilidades de layout responsive van en el **mismo markup** (`flex flex-col lg:flex-row`), no en duplicados `hidden lg:block` — ver `ui/responsive-layouts.mdc`.

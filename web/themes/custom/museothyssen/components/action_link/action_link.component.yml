@@ -7,6 +7,16 @@ noUi: true
 description: |
   Átomo CTA/enlace (pill). Reutilizable vía {% include 'museothyssen:action_link' %}.
 
+thirdPartySettings:
+  sdcStorybook:
+    tags:
+      - autodocs
+    stories:
+      contactPath:
+        props:
+          url: /contacto
+          label: Contacto
+
 props:
   type: object
   required:

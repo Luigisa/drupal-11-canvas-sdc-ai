@@ -12,3 +12,10 @@ Si vas a crear un componente SDC, asegúrate de que:
 Tenemos una utilidad en el proyecto que se llama "generate single-directory-component", que nos permite crear un componente SDC.
 
 ddev drush generate single-directory-component
+
+Tras generar o editar un SDC:
+
+1. Rellenar `props` con `examples` / `default` en `{nombre}.component.yml`.
+2. Añadir `thirdPartySettings.sdcStorybook` (variantes Storybook) cuando aplique.
+3. Verificar en Storybook: `ddev front dev` o `ddev storybook` (puerto 6006).
+4. Integrar en Drupal: `ddev bun run build` en el theme y `ddev drush cr`.

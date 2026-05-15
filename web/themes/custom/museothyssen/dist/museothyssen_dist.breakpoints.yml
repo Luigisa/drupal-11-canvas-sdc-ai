@@ -1,0 +1,48 @@
+museothyssen.Tailwind.xs:
+  label: xs
+  mediaQuery: ""
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+  group: museothyssen Tailwind
+museothyssen.Tailwind.sm:
+  label: sm
+  mediaQuery: "all and (min-width: 40rem)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+  group: museothyssen Tailwind
+museothyssen.Tailwind.md:
+  label: md
+  mediaQuery: "all and (min-width: 48rem)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+  group: museothyssen Tailwind
+museothyssen.Tailwind.lg:
+  label: lg
+  mediaQuery: "all and (min-width: 64rem)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+  group: museothyssen Tailwind
+museothyssen.Tailwind.xl:
+  label: xl
+  mediaQuery: "all and (min-width: 80rem)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+  group: museothyssen Tailwind
+museothyssen.Tailwind.2xl:
+  label: 2xl
+  mediaQuery: "all and (min-width: 96rem)"
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+  group: museothyssen Tailwind

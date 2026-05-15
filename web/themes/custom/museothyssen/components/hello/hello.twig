@@ -44,6 +44,18 @@
     <h2 class="museothyssen-hello__title text-xl font-semibold tracking-tight text-slate-900">{{ title }}</h2>
   {% endif %}
   {% if subtitle %}
-    <p class="museothyssen-hello__subtitle mt-1 text-sm text-slate-600">{{ subtitle }}</p>
+    <button
+      type="button"
+      class="museothyssen-hello__toggle mt-3 text-sm font-medium text-teal-700 underline-offset-2 hover:underline"
+      data-hello-toggle
+      aria-expanded="true"
+      aria-controls="hello-subtitle-{{ attributes.id|default('default') }}"
+    >
+      {{ 'Toggle subtitle'|t }}
+    </button>
+    <p
+      id="hello-subtitle-{{ attributes.id|default('default') }}"
+      class="museothyssen-hello__subtitle mt-1 text-sm text-slate-600"
+    >{{ subtitle }}</p>
   {% endif %}
 </div>

@@ -72,6 +72,15 @@ ddev drush config:status
 ddev composer require drupal/module_name
 ddev composer update
 
+# Bun (theme museothyssen — requires ddev-bun add-on)
+ddev add-on get OpenForgeProject/ddev-bun && ddev restart
+ddev bun install --cwd=web/themes/custom/museothyssen
+cd web/themes/custom/museothyssen && ddev bun run build
+ddev front dev                    # Vite :5173 + Storybook :6006 (front SDC, una terminal)
+ddev front vite                   # solo Vite
+ddev front storybook              # solo Storybook
+ddev storybook                    # alias de front storybook
+
 # Database operations
 ddev import-db --file=backup.sql.gz
 ddev export-db --file=backup.sql.gz

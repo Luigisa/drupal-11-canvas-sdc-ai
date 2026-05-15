@@ -1,0 +1,8 @@
+#!/bin/bash
+
+## Description: Storybook SDC (museothyssen) con Bun
+## Usage: storybook
+## Example: "ddev storybook"
+## ExecRaw: true
+
+cd "$DDEV_COMPOSER_ROOT/web/themes/custom/museothyssen" && exec bun run storybook

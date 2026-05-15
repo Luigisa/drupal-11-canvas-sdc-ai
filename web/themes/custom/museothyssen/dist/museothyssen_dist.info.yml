@@ -1,0 +1,11 @@
+name: museothyssen dist
+type: theme
+base theme: stable9
+description: MUSEOTHYSSEN Theme for compiled assets.
+package: museothyssen
+core_version_requirement: ^11
+hidden: true
+libraries:
+  - museothyssen_dist/css__tailwind
+  - museothyssen_dist/js__main
+  - museothyssen_dist/css__gin-custom

@@ -1,5 +1,2 @@
-global:
-  version: VERSION
-  css:
-    theme:
-      css/global.css: {}
+# Las librerías compiladas (CSS/JS) viven en el sub-theme museothyssen_dist (dist/).
+# Generado/actualizado por @ueberbit/vite-plugin-drupal — ver dist/museothyssen_dist.libraries.yml

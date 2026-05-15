@@ -1,0 +1,69 @@
+---
+description: Verificación del theme museothyssen (TypeScript, Storybook, Drupal)
+globs:
+  - web/themes/custom/museothyssen/**/*
+alwaysApply: false
+---
+
+# Testing — museothyssen
+
+Stack actual del theme: **sin suite Vitest/Playwright en `package.json`**. La verificación combina typecheck, Storybook y comprobación en Drupal.
+
+## TypeScript (obligatorio tras cambiar `*.ts`)
+
+```bash
+cd web/themes/custom/museothyssen
+ddev bun run typecheck
+ddev bun run storybook:typecheck   # si tocaste .storybook/
+```
+
+No usar `bun test` a menos que exista script `test` con Vitest configurado.
+
+## Storybook (componentes SDC)
+
+```bash
+ddev storybook
+# https://<proyecto>.ddev.site:6006
+```
+
+- Stories desde `*.component.yml` (`storybook-addon-sdc`).
+- Variantes en `thirdPartySettings.sdcStorybook.stories`.
+- Addon **a11y**: revisar violaciones en el panel antes de dar por cerrado un componente.
+- Behaviors: el addon adjunta Drupal/once; comprobar interactividad en la story.
+
+## Integración Drupal
+
+Tras cambios en Twig/CSS/TS del theme:
+
+```bash
+ddev bun run build
+ddev drush cr
+```
+
+Con HMR: `ddev bun run dev` en paralelo y navegar el sitio en `:5173` (ver README del theme).
+
+Checklist manual típico:
+
+- Componente en página real (paragraph/block que lo use).
+- BigPipe / AJAX: el behavior usa `once` y `attach(context)` — recargar fragmento si aplica.
+- Librerías: `libraryOverrides.dependencies` en el YAML del SDC.
+
+## PHPUnit (proyecto Drupal, no theme)
+
+Tests de módulos custom en PHP:
+
+```bash
+ddev exec ./vendor/bin/phpunit modules/custom/MODULE/tests/
+```
+
+No sustituye la revisión visual del theme.
+
+## Si se añade Vitest al theme
+
+Configurar scripts en `package.json` y ejecutar **siempre** con:
+
+```bash
+ddev bun run vitest run
+```
+
+`bun test` no carga bien entornos jsdom/happy-dom de Vitest.

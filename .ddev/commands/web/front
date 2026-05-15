@@ -1,0 +1,49 @@
+#!/bin/bash
+
+## Description: Front museothyssen — Vite, Storybook o ambos (Bun)
+## Usage: front [dev|vite|storybook]
+## Example: "ddev front dev" | "ddev front vite" | "ddev front storybook"
+## ExecRaw: true
+## Aliases: frontdev
+
+set -euo pipefail
+
+THEME="$DDEV_COMPOSER_ROOT/web/themes/custom/museothyssen"
+BASE_URL="${DDEV_PRIMARY_URL_WITHOUT_PORT:-https://${DDEV_SITENAME:-drupal-sdc}.ddev.site}"
+SITE_URL="${DDEV_PRIMARY_URL:-$BASE_URL}"
+SUBCMD="${1:-dev}"
+
+cd "$THEME"
+
+case "$SUBCMD" in
+  dev)
+    echo "── Front dev (museothyssen) ──"
+    echo "  Sitio Drupal:  $SITE_URL  (CSS/JS vía :5173)"
+    echo "  Vite HMR:      $BASE_URL:5173"
+    echo "  Storybook SDC: $BASE_URL:6006  (abrir SOLO esta URL para SDC)"
+    echo "  Ctrl+C para parar ambos."
+    echo ""
+    exec bun run front:dev
+    ;;
+  vite)
+    echo "Vite HMR: $BASE_URL:5173 | Sitio: $SITE_URL"
+    exec bun run dev
+    ;;
+  storybook)
+    echo "Storybook: $BASE_URL:6006"
+    exec bun run storybook
+    ;;
+  -h|--help|help)
+    echo "Uso: ddev front [dev|vite|storybook]"
+    echo ""
+    echo "  dev        Vite (:5173) + Storybook (:6006) en paralelo (por defecto)"
+    echo "  vite       Solo Vite / HMR en el sitio Drupal"
+    echo "  storybook  Solo catálogo SDC en Storybook"
+    exit 0
+    ;;
+  *)
+    echo "Subcomando desconocido: $SUBCMD" >&2
+    echo "Uso: ddev front [dev|vite|storybook]" >&2
+    exit 1
+    ;;
+esac

@@ -8,7 +8,10 @@ base theme: stable9
 dependencies:
   - drupal:canvas
 libraries:
-  - museothyssen/global
+  - core/drupal
+  - core/once
+  - museothyssen_dist/css__tailwind
+  - museothyssen_dist/js__main
 
 regions:
   page_top: 'Page top'

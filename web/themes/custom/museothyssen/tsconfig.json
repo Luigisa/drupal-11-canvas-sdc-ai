@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@utils/*": ["js/utils/*"],
+      "@services/*": ["js/services/*"],
+      "@shared/*": ["js/shared/*"]
+    },
+    "typeRoots": ["./js/types", "./node_modules/@ueberbit/vite-plugin-drupal/types"]
+  },
+  "include": [
+    "js/**/*.ts",
+    "components/**/js/**/*.ts",
+    ".uebertool/vite-env.d.ts"
+  ],
+  "exclude": ["vite.config.ts", "node_modules"]
+}

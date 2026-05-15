@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Stub canvas:image para Storybook (sin filtros Drupal file_url / srcset).
+ */
+#}
+<img
+  class="{{ class ?? 'image' }}"
+  src="{{ src }}"
+  {% if alt is defined and alt %}alt="{{ alt }}"{% endif %}
+  {% if width is defined and width %}width="{{ width }}"{% endif %}
+  {% if height is defined and height %}height="{{ height }}"{% endif %}
+  loading="{{ loading ?? 'lazy' }}"
+  {% if sizes is defined and sizes %}sizes="{{ sizes }}"{% endif %}
+  {{ attributes }}
+/>

@@ -1,0 +1,32 @@
+{
+  "_museothyssen_dist.breakpoints.yml": {
+    "file": "museothyssen_dist.breakpoints.yml",
+    "src": "_museothyssen_dist.breakpoints.yml"
+  },
+  "_museothyssen_dist.info.yml": {
+    "file": "museothyssen_dist.info.yml",
+    "src": "_museothyssen_dist.info.yml"
+  },
+  "components/hello/js/hello.ts": {
+    "file": "components/hello/js/hello.DSoftL0Z.js",
+    "name": "hello",
+    "src": "components/hello/js/hello.ts",
+    "isEntry": true
+  },
+  "css/global.css": {
+    "file": "css/global.DPfO_4qz.css",
+    "src": "css/global.css",
+    "isEntry": true
+  },
+  "css/tailwind.css": {
+    "file": "css/tailwind.2yoLp4A9.css",
+    "src": "css/tailwind.css",
+    "isEntry": true
+  },
+  "js/main.ts": {
+    "file": "js/main.-PDg_DEW.js",
+    "name": "main",
+    "src": "js/main.ts",
+    "isEntry": true
+  }
+}

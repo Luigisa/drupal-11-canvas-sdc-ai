@@ -1,0 +1,83 @@
+---
+description: HTML semántico y eficiente en Twig SDC y plantillas del theme museothyssen
+globs:
+  - web/themes/custom/museothyssen/**/*.twig
+alwaysApply: false
+---
+
+# HTML en Twig — museothyssen
+
+Al escribir markup con **Tailwind v4** en Twig:
+
+- **Mínimo de nodos**: apilar utilidades en el elemento necesario; no duplicar árboles solo por breakpoint.
+- **Semántica**: `article`, `section`, `nav`, `header`, `figure`, `button` vs `div` clicable.
+- **Drupal**: usar `{{ attributes }}` / `attributes.addClass()` en el elemento raíz del SDC.
+- **Orden de atributos** (recomendado): `id` → `href`/`type`/`aria-*` → `class` → `data-*`.
+
+## Un solo árbol responsive
+
+### ❌ Incorrecto: markup duplicado desktop/mobile
+
+```twig
+<div class="hidden md:block">
+  <h2 class="text-2xl font-bold">{{ title }}</h2>
+</div>
+<div class="block md:hidden">
+  <h2 class="text-xl font-bold">{{ title }}</h2>
+</div>
+```
+
+### ✅ Correcto: mismas etiquetas, clases responsive
+
+```twig
+<h2 class="text-xl font-bold md:text-2xl">{{ title }}</h2>
+```
+
+## Menos wrappers
+
+### ❌ Incorrecto
+
+```twig
+<div class="wrapper">
+  <div class="inner">
+    <p class="p-4 bg-white rounded-lg">{{ text }}</p>
+  </div>
+</div>
+```
+
+### ✅ Correcto
+
+```twig
+<p class="p-4 bg-white rounded-lg">{{ text }}</p>
+```
+
+## Accesibilidad en SDC
+
+- Botones reales: `<button type="button">`, no `<div onclick>`.
+- Enlaces: `<a href="...">` con texto visible; CTA reutilizable → `{% include 'museothyssen:action_link' %}`.
+- Estado expandible: `aria-expanded`, `aria-controls`, `hidden` en el panel (ver `hello.twig`).
+- Imágenes: `canvas:image` con `alt` obligatorio en props; render arrays de Media en runtime.
+
+## Clases en el root del SDC
+
+```twig
+<div{{ attributes.addClass(
+  'museothyssen-hello',
+  'rounded-2xl border border-slate-200/80 bg-white p-6',
+  'shadow-sm ring-1 ring-slate-900/5',
+) }}>
+```
+
+Prefijo BEM `museothyssen-{componente}__elemento` para hooks de CSS/JS (`[data-hello-toggle]`, `.museothyssen-hello__subtitle`).
+
+## Composición
+
+Incluir otros SDC con namespace del theme:
+
+```twig
+{% include 'museothyssen:action_link' with {
+  attributes: create_attribute({}),
+  url: link_url,
+  label: link_label,
+} only %}
+```

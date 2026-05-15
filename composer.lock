@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e1b7764f6a3c50b567b41a36e8c988a",
+    "content-hash": "03d65f0eb2fac7e716264cb6254e8e7f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6809,6 +6809,51 @@
                 }
             ],
             "time": "2025-12-14T11:28:47+00:00"
+        },
+        {
+            "name": "ueberbit/uebertool_companion",
+            "version": "0.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ueberbit/subtree-uebertool-companion.git",
+                "reference": "303de93a554383fde13ed332b26f637c056e2156"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ueberbit/subtree-uebertool-companion/zipball/303de93a554383fde13ed332b26f637c056e2156",
+                "reference": "303de93a554383fde13ed332b26f637c056e2156",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal-scaffold": {
+                    "file-mapping": {
+                        "[project-root]/.vscode/uebertool_twig.code-snippets": {
+                            "mode": "replace",
+                            "path": "modules/uebertool_twig/uebertool_twig.code-snippets",
+                            "overwrite": true
+                        }
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Companion Module for the UEbertool",
+            "homepage": "https://github.com/ueberbit/uebertool/tree/main/packages/uebertool-companion",
+            "keywords": [
+                "UEbertool",
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/ueberbit/uebertool/issues",
+                "source": "https://github.com/ueberbit/uebertool/tree/main/packages/uebertool-companion"
+            },
+            "time": "2026-04-09T06:54:19+00:00"
         }
     ],
     "packages-dev": [],

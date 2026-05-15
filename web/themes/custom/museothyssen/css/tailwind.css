@@ -1,16 +1,14 @@
 /**
  * @file
- * Entrada Tailwind v4: compilar a global.css (ver package.json).
+ * Entrada Tailwind v4 (Vite / @ueberbit/vite-plugin-drupal).
  */
 @import "tailwindcss";
 
-/* Escanear plantillas y estilos SDC para generar utilidades y @apply. */
 @source "../templates/**/*.twig";
 @source "../components/**/*.twig";
 @source "../components/**/*.css";
 
 @layer base {
-  /* Tema solo claro: UI nativa y scrollbars coherentes con fondos claros. */
   .layout-page {
     color-scheme: only light;
   }

@@ -1,0 +1,33 @@
+json-schema-definitions://canvas.module/image:
+  title: Canvas image
+  type: object
+  required:
+    - src
+  properties:
+    src:
+      type: string
+      format: uri-reference
+      examples:
+        - https://placehold.co/600x400
+    alt:
+      type: string
+      examples:
+        - Placeholder
+    width:
+      type: integer
+      examples:
+        - 600
+    height:
+      type: integer
+      examples:
+        - 400
+    loading:
+      type: string
+      enum:
+        - lazy
+        - eager
+      default: lazy
+    sizes:
+      type: string
+    class:
+      type: string

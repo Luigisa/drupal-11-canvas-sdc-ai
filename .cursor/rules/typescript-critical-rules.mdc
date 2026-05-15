@@ -1,0 +1,94 @@
+---
+description: Reglas obligatorias de TypeScript en behaviors y utilidades del theme museothyssen
+globs:
+  - web/themes/custom/museothyssen/**/*.ts
+alwaysApply: false
+---
+
+# Reglas críticas de TypeScript — museothyssen
+
+Aplican a `js/**/*.ts` y `components/**/js/*.ts`. El markup es **Twig**, no TSX.
+
+## Obligatorio
+
+### 1. Sin `else` salvo petición explícita del usuario
+
+Preferir early returns y clause guards.
+
+### 2. `type`, no `interface`
+
+Decisión arquitectónica del theme.
+
+### 3. Sin ternarios anidados
+
+Extraer a función con `if` sucesivos.
+
+### 4. Sin `any`
+
+Usar tipos explícitos. Si no hay inferencia: `unknown` + comentario:
+
+```ts
+// ⚠️ Respuesta AJAX sin contrato tipado en el módulo origen
+const payload: unknown = await response.json();
+```
+
+### 5. Tipos explícitos y uniones literales
+
+Preferir `'open' | 'closed'` frente a `string` genérico.
+
+### 6. Sin `enum`
+
+Usar union types de literales.
+
+### 7. Sin `switch`
+
+Usar `if (value === 'literal') return ...` por caso.
+
+### 8. Mapas string → string con objetos
+
+```ts
+const labelByKey: Record<string, string> = {
+  hello: 'Hello',
+};
+```
+
+### 9. Iterar con métodos de array
+
+`.forEach`, `.map`, `.find`, `.some` — no `for (let i = 0; ...)`. Excepción: `for...of` si hace falta `break`.
+
+## Patrón Drupal obligatorio en behaviors
+
+Todo JS del theme que toque el DOM:
+
+```ts
+((Drupal, once) => {
+  Drupal.behaviors.museothyssenMiComponente = {
+    attach(context: HTMLElement): void {
+      once('mi-clave-unica', '.mi-selector', context).forEach((root) => {
+        // root es Element; castear si hace falta: root as HTMLElement
+      });
+    },
+  };
+})(Drupal, once);
+```
+
+- **Clave `once` única** por behavior (prefijo `museothyssen-`).
+- **Selector acotado** al root del componente (clase BEM `museothyssen-*`).
+- **Dependencias** en `{component}.component.yml`: `core/drupal`, `core/once` (y las que aplique).
+- **Lógica global mínima** en `js/main.ts`; el resto en `components/{name}/js/{name}.ts`.
+
+## Imports
+
+Aliases Vite (ver `vite.config.ts`):
+
+- `@utils` → `js/utils`
+- `@services` → `js/services`
+- `@shared` → `js/shared`
+
+## Verificación
+
+```bash
+cd web/themes/custom/museothyssen
+ddev bun run typecheck
+ddev bun run storybook:typecheck   # TS de .storybook/
+```

@@ -7,6 +7,23 @@ group: Museo Thyssen
 description: |
   Banner promocional dos columnas (copy + imagen), estilo Caaalma DS Primary.
 
+thirdPartySettings:
+  sdcStorybook:
+    tags:
+      - autodocs
+    stories:
+      telCta:
+        props:
+          title: Aprovecha ahora tu fibra y móvil gratis hasta marzo.
+          subtitle: AdamoTV con 130 canales, de regalo
+          link_url: tel:900651324
+          link_label: Llámanos gratis al 900 651 324
+          image:
+            src: https://placehold.co/800x500
+            alt: Ilustración promo
+            width: 800
+            height: 500
+
 libraryOverrides:
   dependencies:
     - canvas/image

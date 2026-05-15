@@ -5,10 +5,27 @@ name: Hello
 status: stable
 group: Museo Thyssen
 
+thirdPartySettings:
+  sdcStorybook:
+    tags:
+      - autodocs
+    stories:
+      withCollapsedSubtitle:
+        props:
+          title: Hello
+          subtitle: Texto largo de prueba para Storybook
+          image:
+            src: https://placehold.co/600x400
+            alt: Demo
+            width: 600
+            height: 400
+
 # Asegura estilos del SDC canvas:image (srcset, etc.).
 # @see https://project.pages.drupalcode.org/canvas/sdc-components/image/
 libraryOverrides:
   dependencies:
+    - core/drupal
+    - core/once
     - canvas/image
 
 props:

@@ -7067,6 +7067,54 @@
                 }
             ],
             "install-path": "../twig/twig"
+        },
+        {
+            "name": "ueberbit/uebertool_companion",
+            "version": "0.8.1",
+            "version_normalized": "0.8.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ueberbit/subtree-uebertool-companion.git",
+                "reference": "303de93a554383fde13ed332b26f637c056e2156"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ueberbit/subtree-uebertool-companion/zipball/303de93a554383fde13ed332b26f637c056e2156",
+                "reference": "303de93a554383fde13ed332b26f637c056e2156",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11.0"
+            },
+            "time": "2026-04-09T06:54:19+00:00",
+            "type": "drupal-module",
+            "extra": {
+                "drupal-scaffold": {
+                    "file-mapping": {
+                        "[project-root]/.vscode/uebertool_twig.code-snippets": {
+                            "mode": "replace",
+                            "path": "modules/uebertool_twig/uebertool_twig.code-snippets",
+                            "overwrite": true
+                        }
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Companion Module for the UEbertool",
+            "homepage": "https://github.com/ueberbit/uebertool/tree/main/packages/uebertool-companion",
+            "keywords": [
+                "UEbertool",
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://github.com/ueberbit/uebertool/issues",
+                "source": "https://github.com/ueberbit/uebertool/tree/main/packages/uebertool-companion"
+            },
+            "install-path": "../../web/modules/contrib/uebertool_companion"
         }
     ],
     "dev": true,
