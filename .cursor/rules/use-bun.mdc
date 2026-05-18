@@ -1,41 +1,41 @@
 ---
-description: Bun como runtime del theme museothyssen (vía DDEV)
+description: Bun as the museothyssen theme runtime (via DDEV)
 globs:
   - web/themes/custom/museothyssen/package.json
   - web/themes/custom/museothyssen/bun.lock
 alwaysApply: false
 ---
 
-# Bun — theme museothyssen
+# Bun — museothyssen theme
 
-**Runtime de front del theme:** Bun + lockfile `bun.lock` en `web/themes/custom/museothyssen/`.
+**Front-end runtime for the theme:** Bun + `bun.lock` in `web/themes/custom/museothyssen/`.
 
-**Drupal / Composer / Drush** siguen en la raíz del proyecto con `ddev composer` y `ddev drush` — no sustituir por Bun.
+**Drupal / Composer / Drush** stay at the project root with `ddev composer` and `ddev drush` — do not replace with Bun.
 
-## Prerrequisito DDEV
+## DDEV prerequisite
 
-Add-on [ddev-bun](https://addons.ddev.com/addons/OpenForgeProject/ddev-bun):
+[ddev-bun](https://addons.ddev.com/addons/OpenForgeProject/ddev-bun) add-on:
 
 ```bash
 ddev add-on get OpenForgeProject/ddev-bun
 ddev restart
 ```
 
-## Comandos (desde el theme)
+## Commands (from the theme)
 
 ```bash
 cd web/themes/custom/museothyssen
 
 ddev bun install              # postinstall → uebertool
-ddev bun run dev              # Vite :5173 (HMR con sitio Drupal)
+ddev bun run dev              # Vite :5173 (HMR with Drupal site)
 ddev bun run build            # dist/ + postbuild → museothyssen_dist
 ddev bun run typecheck        # tsc
-ddev bun run storybook        # :6006 (o ddev storybook desde raíz)
+ddev bun run storybook        # :6006 (or ddev storybook from repo root)
 ddev front dev                # Vite :5173 + Storybook :6006 (concurrently)
 ddev bun run build-storybook
 ```
 
-Desde raíz del repo:
+From repo root:
 
 ```bash
 ddev bun install --cwd=web/themes/custom/museothyssen
@@ -43,20 +43,20 @@ ddev exec bash -lc 'cd web/themes/custom/museothyssen && bun run build'
 ddev storybook
 ```
 
-Tras `build` o cambios en `dist/*.libraries.yml`: `ddev drush cr`.
+After `build` or changes to `dist/*.libraries.yml`: `ddev drush cr`.
 
-## Tabla rápida
+## Quick reference
 
-| Acción | Comando |
+| Action | Command |
 |--------|---------|
-| Instalar deps | `ddev bun install` (en carpeta theme) |
-| Añadir paquete | `ddev bun add <pkg>` |
+| Install deps | `ddev bun install` (in theme folder) |
+| Add package | `ddev bun add <pkg>` |
 | Dev dependency | `ddev bun add -d <pkg>` |
-| Script package.json | `ddev bun run <script>` |
-| Ejecutar TS suelto | `ddev bun <file.ts>` |
-| CLI puntual npm | `ddev bunx <pkg>` |
+| package.json script | `ddev bun run <script>` |
+| Run standalone TS | `ddev bun <file.ts>` |
+| One-off npm CLI | `ddev bunx <pkg>` |
 
-## Prohibido en el theme
+## Forbidden in the theme
 
 ```bash
 npm install / npm run
@@ -67,9 +67,9 @@ npx
 
 ## Vite + DDEV
 
-- Dev: `ddev bun run dev` — requiere puerto **5173** en `web_extra_exposed_ports` (`.ddev/config.yaml`).
-- Parar dev → `ddev bun run build` + `ddev drush cr` para servir `dist/` en producción local.
+- Dev: `ddev bun run dev` — requires port **5173** in `web_extra_exposed_ports` (`.ddev/config.yaml`).
+- Stop dev → `ddev bun run build` + `ddev drush cr` to serve `dist/` in local production.
 
 ## Tests
 
-No usar `bun test` para el theme salvo que se añada Vitest u otro runner al `package.json`. Hoy: `ddev bun run typecheck` — ver `testing.mdc`.
+Do not use `bun test` for the theme unless Vitest or another runner is added to `package.json`. Today: `ddev bun run typecheck` — see `testing.mdc`.

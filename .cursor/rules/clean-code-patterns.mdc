@@ -1,5 +1,5 @@
 ---
-description: Patrones de código limpio para SDC (Twig), behaviors (TypeScript) y YAML del theme museothyssen
+description: Clean code patterns for SDC (Twig), behaviors (TypeScript), and museothyssen theme YAML
 globs:
   - web/themes/custom/museothyssen/**/*.twig
   - web/themes/custom/museothyssen/**/*.ts
@@ -7,22 +7,22 @@ globs:
 alwaysApply: false
 ---
 
-# Patrones de Código Limpio — museothyssen
+# Clean Code Patterns — museothyssen
 
-## Principio central
+## Core principle
 
-**Baja anidación, alta legibilidad.** En este theme la UI vive en **Twig (SDC)**; la interactividad en **TypeScript** (`Drupal.behaviors` + `once`). No mezclar responsabilidades entre capas.
+**Low nesting, high readability.** In this theme, UI lives in **Twig (SDC)**; interactivity in **TypeScript** (`Drupal.behaviors` + `once`). Do not mix responsibilities across layers.
 
-| Capa | Archivos | Responsabilidad |
+| Layer | Files | Responsibility |
 |------|----------|-----------------|
-| **SDC** | `components/{tier}/{name}/{name}.twig` (`tier`: `atoms` \| `molecules` \| `organisms`) | Markup, clases Tailwind, composición de otros SDC |
-| **Schema** | `{name}.component.yml` | Props, ejemplos, Storybook, dependencias de librería |
-| **Behavior** | `components/{tier}/{name}/js/{name}.ts` | DOM, eventos, ARIA (solo si hace falta JS) |
-| **Layout** | `templates/**/*.twig` | Regiones, páginas, grids — no estilos de átomos |
+| **SDC** | `components/{tier}/{name}/{name}.twig` (`tier`: `atoms` \| `molecules` \| `organisms`) | Markup, Tailwind classes, composition of other SDCs |
+| **Schema** | `{name}.component.yml` | Props, examples, Storybook, library dependencies |
+| **Behavior** | `components/{tier}/{name}/js/{name}.ts` | DOM, events, ARIA (only when JS is needed) |
+| **Layout** | `templates/**/*.twig` | Regions, pages, grids — not atom styles |
 
-## Twig: extraer en lugar de anidar
+## Twig: extract instead of nesting
 
-### ❌ Antes: ramas profundas en un solo archivo
+### ❌ Before: deep branches in one file
 
 ```twig
 {% for item in items %}
@@ -36,7 +36,7 @@ alwaysApply: false
 {% endfor %}
 ```
 
-### ✅ Después: macro o include dedicado
+### ✅ After: dedicated macro or include
 
 ```twig
 {% macro breadcrumb_item(item, is_last) %}
@@ -52,23 +52,23 @@ alwaysApply: false
 {% endfor %}
 ```
 
-Para bloques grandes (p. ej. imagen con render array vs `canvas:image`), seguir el patrón de `hello.twig` / `promo_banner.twig`: **un bloque `{% if %}` por caso**, comentario breve, sin duplicar el wrapper.
+For large blocks (e.g. image with render array vs `canvas:image`), follow `hello.twig` / `promo_banner.twig`: **one `{% if %}` block per case**, brief comment, no duplicated wrapper.
 
-## TypeScript (behaviors): funciones pequeñas
+## TypeScript (behaviors): small functions
 
-### ❌ Antes: lógica larga dentro de `attach`
+### ❌ Before: long logic inside `attach`
 
 ```ts
 once("id", ".root", context).forEach((root) => {
   const btn = root.querySelector("button");
   if (!btn) return;
   btn.addEventListener("click", () => {
-  /* muchas líneas */
+  /* many lines */
   });
 });
 ```
 
-### ✅ Después: helpers con early return
+### ✅ After: helpers with early return
 
 ```ts
 function bindHelloToggle(root: HTMLElement): void {
@@ -85,26 +85,26 @@ attach(context) {
 }
 ```
 
-Reutilizar utilidades en `js/utils/` (p. ej. `toggleDataState`).
+Reuse utilities in `js/utils/` (e.g. `toggleDataState`).
 
-## Reglas clave
+## Key rules
 
-- **Máximo 2–3 niveles** de `{% if %}` / `{% for %}` en un mismo template.
-- **Una responsabilidad por SDC**: no meter layout de página dentro de un átomo.
-- **Nombres BEM + prefijo theme**: `museothyssen-{component}__element`.
-- **Componer SDC** con `{% include 'museothyssen:action_link' with { ... } only %}` en lugar de copiar markup.
-- **Clause guards en TS**: `if (!el) return;` — ver también `typescript-critical-rules.mdc`.
+- **At most 2–3 levels** of `{% if %}` / `{% for %}` in one template.
+- **One responsibility per SDC**: do not put page layout inside an atom.
+- **BEM names + theme prefix**: `museothyssen-{component}__element`.
+- **Compose SDCs** with `{% include 'museothyssen:action_link' with { ... } only %}` instead of copying markup.
+- **Clause guards in TS**: `if (!el) return;` — see also `typescript-critical-rules.mdc`.
 
-## Props en `*.component.yml`
+## Props in `*.component.yml`
 
-- **`examples`** en cada prop relevante (Storybook y documentación).
-- **`required`** solo lo imprescindible; el resto con `default` o opcional.
-- Variantes visuales → `thirdPartySettings.sdcStorybook.stories`, no ramas Twig duplicadas por variante.
+- **`examples`** on each relevant prop (Storybook and docs).
+- **`required`** only for what is mandatory; everything else with `default` or optional.
+- Visual variants → `thirdPartySettings.sdcStorybook.stories`, not duplicate Twig branches per variant.
 
-## Crear componentes nuevos
+## Creating new components
 
 ```bash
 ddev drush generate single-directory-component
 ```
 
-Convenciones de nombre: regla `sdc.mdc` (singular, inglés, descriptivo).
+Naming conventions: see `sdc.mdc` (singular, English, descriptive).

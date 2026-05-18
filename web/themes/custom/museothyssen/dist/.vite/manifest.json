@@ -8,7 +8,7 @@
     "src": "_museothyssen_dist.info.yml"
   },
   "components/organisms/hello/js/hello.ts": {
-    "file": "components/organisms/hello/js/hello.DwDMuD0R.js",
+    "file": "components/organisms/hello/js/hello.BbgC5E47.js",
     "name": "hello",
     "src": "components/organisms/hello/js/hello.ts",
     "isEntry": true,
@@ -22,7 +22,7 @@
     "isEntry": true
   },
   "css/tailwind.css": {
-    "file": "css/tailwind.CDRQ29VO.css",
+    "file": "css/tailwind.455zbWmM.css",
     "src": "css/tailwind.css",
     "isEntry": true
   },

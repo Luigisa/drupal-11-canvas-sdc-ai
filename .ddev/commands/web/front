@@ -1,8 +1,8 @@
 #!/bin/bash
 
-## Description: Front museothyssen — Vite, Storybook o ambos (Bun)
-## Usage: front [dev|vite|storybook]
-## Example: "ddev front dev" | "ddev front vite" | "ddev front storybook"
+## Description: Front museothyssen — Vite, Storybook, build o ambos (Bun)
+## Usage: front [dev|vite|storybook|build]
+## Example: "ddev front dev" | "ddev front vite" | "ddev front storybook" | "ddev front build"
 ## ExecRaw: true
 ## Aliases: frontdev
 
@@ -33,17 +33,25 @@ case "$SUBCMD" in
     echo "Storybook: $BASE_URL:6006"
     exec bun run storybook
     ;;
+  build)
+    echo "── Front build (museothyssen) ──"
+    echo "  Vite → dist/ + postbuild (museothyssen_dist)"
+    echo "  Tras build: ddev drush cr"
+    echo ""
+    exec bun run build
+    ;;
   -h|--help|help)
-    echo "Uso: ddev front [dev|vite|storybook]"
+    echo "Uso: ddev front [dev|vite|storybook|build]"
     echo ""
     echo "  dev        Vite (:5173) + Storybook (:6006) en paralelo (por defecto)"
     echo "  vite       Solo Vite / HMR en el sitio Drupal"
     echo "  storybook  Solo catálogo SDC en Storybook"
+    echo "  build      Compilar theme (Vite + postbuild → dist/)"
     exit 0
     ;;
   *)
     echo "Subcomando desconocido: $SUBCMD" >&2
-    echo "Uso: ddev front [dev|vite|storybook]" >&2
+    echo "Uso: ddev front [dev|vite|storybook|build]" >&2
     exit 1
     ;;
 esac

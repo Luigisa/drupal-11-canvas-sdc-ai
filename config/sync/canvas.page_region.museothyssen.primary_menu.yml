@@ -1,0 +1,22 @@
+uuid: aa3a8cbc-110c-4cb6-bda0-11964b2a021e
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_menu_block.main
+  theme:
+    - museothyssen
+id: museothyssen.primary_menu
+region: primary_menu
+theme: museothyssen
+component_tree:
+  '0:e7f3cfb3-d9cb-4365-9e84-687a57fb980b':
+    uuid: e7f3cfb3-d9cb-4365-9e84-687a57fb980b
+    component_id: block.system_menu_block.main
+    component_version: 023ff7ba63f80798
+    inputs:
+      label: 'Main navigation'
+      label_display: '0'
+      level: 1
+      depth: 2
+      expand_all_items: true

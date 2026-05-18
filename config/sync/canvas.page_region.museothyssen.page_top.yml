@@ -1,0 +1,10 @@
+uuid: ebf3d3ef-9123-46c7-9c5a-2d89930e9386
+langcode: en
+status: true
+dependencies:
+  theme:
+    - museothyssen
+id: museothyssen.page_top
+region: page_top
+theme: museothyssen
+component_tree: {  }

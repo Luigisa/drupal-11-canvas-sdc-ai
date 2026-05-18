@@ -1,9 +1,15 @@
 {#
 /**
  * @file
- * Átomo SDC: museothyssen:action_link (CTA pill, Caaalma Primary).
+ * Átomo SDC: museothyssen:action_link (CTA pill, variantes primary / secondary / tertiary).
  */
 #}
-<a href="{{ url }}"{{ attributes.addClass(
-  'museothyssen-action-link inline-flex h-[52px] shrink-0 items-center justify-center rounded-full border border-solid border-[#010101] bg-[#010101] px-6 py-4 text-center text-base font-semibold leading-none text-white no-underline transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#010101]'
-) }}>{{ label }}</a>
+{% set tone = variant|default('primary') %}
+{% set variant_classes = {
+  primary: 'border-[#010101] bg-[#010101] text-white no-underline hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#010101]',
+  secondary: 'border-[#010101] bg-white text-[#010101] no-underline hover:bg-[#010101] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#010101]',
+  tertiary: 'border-transparent bg-transparent text-[#010101] underline decoration-2 underline-offset-4 hover:bg-[#010101]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#010101]',
+} %}
+{% set chosen = variant_classes[tone]|default(variant_classes.primary) %}
+{% set base_classes = 'museothyssen-action-link inline-flex h-[52px] shrink-0 items-center justify-center rounded-full border border-solid px-6 py-4 text-center text-base font-semibold leading-none transition duration-200' %}
+<a href="{{ url }}" {{ attributes.addClass(base_classes, chosen) }}>{{ label }}</a>

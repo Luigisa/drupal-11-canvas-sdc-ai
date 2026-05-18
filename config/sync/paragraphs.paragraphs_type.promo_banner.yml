@@ -6,7 +6,7 @@ dependencies:
     - paragraphs_browser
 third_party_settings:
   paragraphs_browser:
-    image_path: themes/custom/museothyssen/components/organisms/promo_banner/image.png
+    image_path: themes/custom/museothyssen/components/promo_banner/image.png
 id: promo_banner
 label: 'Promo banner'
 icon_uuid: null

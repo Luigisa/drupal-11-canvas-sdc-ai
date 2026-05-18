@@ -1,0 +1,19 @@
+uuid: 715982bf-ccb3-4fa3-88ea-ddc0867564e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_powered_by_block
+  theme:
+    - museothyssen
+id: museothyssen.footer
+region: footer
+theme: museothyssen
+component_tree:
+  '0:0527aa08-fe68-4c5a-878a-6246d915ae4a':
+    uuid: 0527aa08-fe68-4c5a-878a-6246d915ae4a
+    component_id: block.system_powered_by_block
+    component_version: fcc4b9a4f6d6de35
+    inputs:
+      label: 'Powered by Drupal'
+      label_display: '0'

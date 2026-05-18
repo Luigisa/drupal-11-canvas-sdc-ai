@@ -16,7 +16,7 @@
     "header": true,
     "css": {
       "base": {
-        "/themes/custom/museothyssen/dist/css/tailwind.CDRQ29VO.css": {
+        "/themes/custom/museothyssen/dist/css/tailwind.455zbWmM.css": {
           "type": "external",
           "preprocess": false,
           "noquery": true,
@@ -45,7 +45,7 @@
   "sdc--hello": {
     "header": true,
     "js": {
-      "/themes/custom/museothyssen/dist/components/organisms/hello/js/hello.DwDMuD0R.js": {
+      "/themes/custom/museothyssen/dist/components/organisms/hello/js/hello.BbgC5E47.js": {
         "type": "file",
         "preprocess": false,
         "noquery": true,

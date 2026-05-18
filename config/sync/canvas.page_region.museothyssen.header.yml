@@ -1,0 +1,22 @@
+uuid: 6c6bf4f2-dd4b-43b4-961d-49485c027809
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_branding_block
+  theme:
+    - museothyssen
+id: museothyssen.header
+region: header
+theme: museothyssen
+component_tree:
+  '0:3d2b41df-22ba-45ce-b7e8-f95ee28ffea0':
+    uuid: 3d2b41df-22ba-45ce-b7e8-f95ee28ffea0
+    component_id: block.system_branding_block
+    component_version: b168140fdcaebae5
+    inputs:
+      label: 'Site branding'
+      label_display: '0'
+      use_site_logo: true
+      use_site_name: true
+      use_site_slogan: true

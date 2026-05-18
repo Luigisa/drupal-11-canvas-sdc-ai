@@ -1,52 +1,52 @@
 ---
-description: Layouts responsive en Twig con Tailwind v4 — sin duplicar contenido
+description: Responsive layouts in Twig with Tailwind v4 — no duplicated content
 globs:
   - web/themes/custom/museothyssen/**/*.twig
 alwaysApply: false
 ---
 
-# Layouts responsive — museothyssen
+# Responsive layouts — museothyssen
 
-## Un solo markup con prefijos Tailwind
+## Single markup with Tailwind prefixes
 
-Usar `sm:`, `md:`, `lg:`, `xl:` en el **mismo** nodo. No montar dos árboles con `hidden` / `block` para el mismo contenido.
+Use `sm:`, `md:`, `lg:`, `xl:` on the **same** node. Do not build two trees with `hidden` / `block` for the same content.
 
 ```twig
-{# ✅ Correcto — promo_banner #}
+{# ✅ Correct — promo_banner #}
 <div class="flex flex-col lg:flex-row lg:items-stretch">
   ...
 </div>
 
-{# ❌ Evitar #}
+{# ❌ Avoid #}
 <div class="hidden lg:block">...</div>
 <div class="block lg:hidden">...</div>
 ```
 
-## Contenedor de página
+## Page container
 
-En plantillas de layout (`templates/page.html.twig`, regiones), patrón habitual:
+In layout templates (`templates/page.html.twig`, regions), typical pattern:
 
 ```twig
 <div class="layout-content mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 ```
 
-Los **SDC no fijan** `max-w-6xl` del sitio salvo que el diseño lo exija en un bloque full-bleed con inner propio (hero con columnas `lg:max-w-[50%]` en hijo, no en átomos).
+**SDCs do not set** site `max-w-6xl` unless the design requires a full-bleed block with its own inner (hero with `lg:max-w-[50%]` on a child, not on atoms).
 
-## Flex y grid
+## Flex and grid
 
-- **Stack móvil → fila desktop**: `flex flex-col lg:flex-row`
-- **Grid de cards**: en template de paragraph/listado, no dentro de `action_link`
-- **Espaciado**: `gap-*` en el contenedor flex/grid; `px-6 py-12 sm:px-10 lg:pl-[clamp(...)]` cuando el diseño lo pida (ver `promo_banner`)
+- **Mobile stack → desktop row**: `flex flex-col lg:flex-row`
+- **Card grid**: in paragraph/listing template, not inside `action_link`
+- **Spacing**: `gap-*` on the flex/grid container; `px-6 py-12 sm:px-10 lg:pl-[clamp(...)]` when the design requires it (see `promo_banner`)
 
-## Imágenes responsive
+## Responsive images
 
-- Props `sizes` en `canvas:image` acorde al layout (`(max-width: 768px) 100vw, 50vw`, etc.).
-- Clases en `image.class` o en wrapper `[&_img]:...` para render arrays de Drupal.
+- `sizes` on `canvas:image` props matching layout (`(max-width: 768px) 100vw, 50vw`, etc.).
+- Classes on `image.class` or wrapper `[&_img]:...` for Drupal render arrays.
 
-## Breakpoints Drupal
+## Drupal breakpoints
 
-`dist/museothyssen_dist.breakpoints.yml` (generado en build) alinea con el theme dist; en Twig/CSS usar los mismos prefijos Tailwind que en diseño.
+`dist/museothyssen_dist.breakpoints.yml` (generated on build) aligns with the dist theme; in Twig/CSS use the same Tailwind prefixes as in design.
 
 ## Storybook
 
-Las stories deben verse bien en viewport móvil y desktop del addon; no hace falta duplicar stories por breakpoint si el Twig ya es responsive.
+Stories should look good at mobile and desktop viewports in the addon; no need to duplicate stories per breakpoint if Twig is already responsive.

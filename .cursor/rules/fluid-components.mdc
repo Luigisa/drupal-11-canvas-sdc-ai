@@ -1,38 +1,38 @@
 ---
-description: Componentes SDC fluidos — el contenedor define el tamaño, no el átomo
+description: Fluid SDC components — the container defines size, not the atom
 globs:
   - web/themes/custom/museothyssen/components/**/*.twig
   - web/themes/custom/museothyssen/templates/**/*.twig
 alwaysApply: false
 ---
 
-# Componentes fluidos — museothyssen
+# Fluid components — museothyssen
 
-## Principio
+## Principle
 
-**Los SDC son fluidos por defecto.** El layout (plantilla de región, página, paragraph wrapper o grid padre) define `max-width`, columnas y `gap`. El componente define estructura interna, padding y estilo — no anchos fijos salvo excepciones.
+**SDCs are fluid by default.** Layout (region template, page, paragraph wrapper, or parent grid) defines `max-width`, columns, and `gap`. The component defines internal structure, padding, and style — not fixed widths except in exceptions.
 
-Los contenedores block en Twig (`div`, `article`, `section`) ya ocupan el ancho del padre. No añadir `w-full` por defecto.
+Block containers in Twig (`div`, `article`, `section`) already fill the parent width. Do not add `w-full` by default.
 
-## Responsabilidades
+## Responsibilities
 
-| Capa | Ubicación | Define | No define |
+| Layer | Location | Defines | Does not define |
 |------|-----------|--------|-----------|
-| **SDC** | `components/*/*.twig` | Estructura interna, padding, tipografía del bloque | `max-w-*` de página, columnas del sitio |
-| **Layout theme** | `templates/region--*.twig`, `page.html.twig` | Contenedor, grid/flex, `gap` | Estilos internos del promo/hero |
-| **Paragraph / block** | `templates/paragraphs/`, `templates/block/` | Wrapper Drupal, clases de espaciado entre bloques | Duplicar markup del SDC |
+| **SDC** | `components/*/*.twig` | Internal structure, padding, block typography | Page `max-w-*`, site columns |
+| **Theme layout** | `templates/region--*.twig`, `page.html.twig` | Container, grid/flex, `gap` | Internal promo/hero styles |
+| **Paragraph / block** | `templates/paragraphs/`, `templates/block/` | Drupal wrapper, spacing between blocks | Duplicate SDC markup |
 
-## ✅ Correcto
+## ✅ Correct
 
 ```twig
-{# SDC fluido — sin ancho fijo en el root #}
+{# Fluid SDC — no fixed width on root #}
 <article{{ attributes.addClass('museothyssen-card rounded-xl bg-white p-6') }}>
   {{ content }}
 </article>
 ```
 
 ```twig
-{# Layout define distribución #}
+{# Layout defines distribution #}
 <div class="layout-content mx-auto max-w-6xl px-6">
   <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
     {% for card in cards %}
@@ -42,24 +42,24 @@ Los contenedores block en Twig (`div`, `article`, `section`) ya ocupan el ancho 
 </div>
 ```
 
-`promo_banner` usa `lg:max-w-[50%]` en la **columna de copy**, no en el root del banner — patrón válido para split hero, no para átomos genéricos.
+`promo_banner` uses `lg:max-w-[50%]` on the **copy column**, not on the banner root — valid pattern for split hero, not for generic atoms.
 
-## ❌ Incorrecto
+## ❌ Incorrect
 
 ```twig
-{# Ancho fijo en un átomo reutilizable #}
+{# Fixed width on a reusable atom #}
 <article class="w-[350px] ...">
 
-{# Redundante #}
+{# Redundant #}
 <div class="w-full">
 ```
 
-## Excepciones
+## Exceptions
 
-- **Iconos / media decorativa**: tamaños fijos o `max-h-*` para proporción.
-- **CTA inline** (`action_link`): `shrink-0`, `inline-flex`, altura fija de diseño (`h-[52px]`).
-- **Imágenes**: `object-cover` / `max-h-*` en la figura, no en el wrapper de página.
+- **Icons / decorative media**: fixed sizes or `max-h-*` for aspect ratio.
+- **Inline CTA** (`action_link`): `shrink-0`, `inline-flex`, design-fixed height (`h-[52px]`).
+- **Images**: `object-cover` / `max-h-*` on the figure, not on the page wrapper.
 
 ## Tailwind
 
-Las utilidades de layout responsive van en el **mismo markup** (`flex flex-col lg:flex-row`), no en duplicados `hidden lg:block` — ver `ui/responsive-layouts.mdc`.
+Responsive layout utilities belong in the **same markup** (`flex flex-col lg:flex-row`), not in duplicated `hidden lg:block` trees — see `ui/responsive-layouts.mdc`.

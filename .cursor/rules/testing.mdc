@@ -1,5 +1,5 @@
 ---
-description: Verificación del theme museothyssen (TypeScript, Storybook, Drupal)
+description: museothyssen theme verification (TypeScript, Storybook, Drupal)
 globs:
   - web/themes/custom/museothyssen/**/*
 alwaysApply: false
@@ -7,63 +7,63 @@ alwaysApply: false
 
 # Testing — museothyssen
 
-Stack actual del theme: **sin suite Vitest/Playwright en `package.json`**. La verificación combina typecheck, Storybook y comprobación en Drupal.
+Current theme stack: **no Vitest/Playwright suite in `package.json`**. Verification combines typecheck, Storybook, and Drupal checks.
 
-## TypeScript (obligatorio tras cambiar `*.ts`)
+## TypeScript (required after changing `*.ts`)
 
 ```bash
 cd web/themes/custom/museothyssen
 ddev bun run typecheck
-ddev bun run storybook:typecheck   # si tocaste .storybook/
+ddev bun run storybook:typecheck   # if you touched .storybook/
 ```
 
-No usar `bun test` a menos que exista script `test` con Vitest configurado.
+Do not use `bun test` unless a `test` script with Vitest is configured.
 
-## Storybook (componentes SDC)
+## Storybook (SDC components)
 
 ```bash
 ddev storybook
-# https://<proyecto>.ddev.site:6006
+# https://<project>.ddev.site:6006
 ```
 
-- Stories desde `*.component.yml` (`storybook-addon-sdc`).
-- Variantes en `thirdPartySettings.sdcStorybook.stories`.
-- Addon **a11y**: revisar violaciones en el panel antes de dar por cerrado un componente.
-- Behaviors: el addon adjunta Drupal/once; comprobar interactividad en la story.
+- Stories from `*.component.yml` (`storybook-addon-sdc`).
+- Variants in `thirdPartySettings.sdcStorybook.stories`.
+- **a11y** addon: review violations in the panel before closing out a component.
+- Behaviors: the addon attaches Drupal/once; verify interactivity in the story.
 
-## Integración Drupal
+## Drupal integration
 
-Tras cambios en Twig/CSS/TS del theme:
+After theme Twig/CSS/TS changes:
 
 ```bash
 ddev bun run build
 ddev drush cr
 ```
 
-Con HMR: `ddev bun run dev` en paralelo y navegar el sitio en `:5173` (ver README del theme).
+With HMR: run `ddev bun run dev` in parallel and browse the site on `:5173` (see theme README).
 
-Checklist manual típico:
+Typical manual checklist:
 
-- Componente en página real (paragraph/block que lo use).
-- BigPipe / AJAX: el behavior usa `once` y `attach(context)` — recargar fragmento si aplica.
-- Librerías: `libraryOverrides.dependencies` en el YAML del SDC.
+- Component on a real page (paragraph/block that uses it).
+- BigPipe / AJAX: behavior uses `once` and `attach(context)` — reload fragment if applicable.
+- Libraries: `libraryOverrides.dependencies` in the SDC YAML.
 
-## PHPUnit (proyecto Drupal, no theme)
+## PHPUnit (Drupal project, not theme)
 
-Tests de módulos custom en PHP:
+Custom module PHP tests:
 
 ```bash
 ddev exec ./vendor/bin/phpunit modules/custom/MODULE/tests/
 ```
 
-No sustituye la revisión visual del theme.
+Does not replace visual review of the theme.
 
-## Si se añade Vitest al theme
+## If Vitest is added to the theme
 
-Configurar scripts en `package.json` y ejecutar **siempre** con:
+Configure scripts in `package.json` and **always** run:
 
 ```bash
 ddev bun run vitest run
 ```
 
-`bun test` no carga bien entornos jsdom/happy-dom de Vitest.
+`bun test` does not load jsdom/happy-dom Vitest environments well.

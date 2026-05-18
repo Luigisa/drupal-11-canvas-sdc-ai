@@ -1,22 +1,22 @@
 ---
-description: HTML semántico y eficiente en Twig SDC y plantillas del theme museothyssen
+description: Semantic, efficient HTML in museothyssen SDC Twig and templates
 globs:
   - web/themes/custom/museothyssen/**/*.twig
 alwaysApply: false
 ---
 
-# HTML en Twig — museothyssen
+# HTML in Twig — museothyssen
 
-Al escribir markup con **Tailwind v4** en Twig:
+When writing markup with **Tailwind v4** in Twig:
 
-- **Mínimo de nodos**: apilar utilidades en el elemento necesario; no duplicar árboles solo por breakpoint.
-- **Semántica**: `article`, `section`, `nav`, `header`, `figure`, `button` vs `div` clicable.
-- **Drupal**: usar `{{ attributes }}` / `attributes.addClass()` en el elemento raíz del SDC.
-- **Orden de atributos** (recomendado): `id` → `href`/`type`/`aria-*` → `class` → `data-*`.
+- **Minimal nodes**: stack utilities on the needed element; do not duplicate trees only for breakpoints.
+- **Semantics**: `article`, `section`, `nav`, `header`, `figure`, `button` vs clickable `div`.
+- **Drupal**: use `{{ attributes }}` / `attributes.addClass()` on the SDC root element.
+- **Attribute order** (recommended): `id` → `href`/`type`/`aria-*` → `class` → `data-*`.
 
-## Un solo árbol responsive
+## Single responsive tree
 
-### ❌ Incorrecto: markup duplicado desktop/mobile
+### ❌ Incorrect: duplicated desktop/mobile markup
 
 ```twig
 <div class="hidden md:block">
@@ -27,15 +27,15 @@ Al escribir markup con **Tailwind v4** en Twig:
 </div>
 ```
 
-### ✅ Correcto: mismas etiquetas, clases responsive
+### ✅ Correct: same tags, responsive classes
 
 ```twig
 <h2 class="text-xl font-bold md:text-2xl">{{ title }}</h2>
 ```
 
-## Menos wrappers
+## Fewer wrappers
 
-### ❌ Incorrecto
+### ❌ Incorrect
 
 ```twig
 <div class="wrapper">
@@ -45,20 +45,20 @@ Al escribir markup con **Tailwind v4** en Twig:
 </div>
 ```
 
-### ✅ Correcto
+### ✅ Correct
 
 ```twig
 <p class="p-4 bg-white rounded-lg">{{ text }}</p>
 ```
 
-## Accesibilidad en SDC
+## Accessibility in SDC
 
-- Botones reales: `<button type="button">`, no `<div onclick>`.
-- Enlaces: `<a href="...">` con texto visible; CTA reutilizable → `{% include 'museothyssen:action_link' %}`.
-- Estado expandible: `aria-expanded`, `aria-controls`, `hidden` en el panel (ver `hello.twig`).
-- Imágenes: `canvas:image` con `alt` obligatorio en props; render arrays de Media en runtime.
+- Real buttons: `<button type="button">`, not `<div onclick>`.
+- Links: `<a href="...">` with visible text; reusable CTA → `{% include 'museothyssen:action_link' %}`.
+- Expandable state: `aria-expanded`, `aria-controls`, `hidden` on the panel (see `hello.twig`).
+- Images: `canvas:image` with required `alt` in props; Media render arrays at runtime.
 
-## Clases en el root del SDC
+## Classes on the SDC root
 
 ```twig
 <div{{ attributes.addClass(
@@ -68,11 +68,11 @@ Al escribir markup con **Tailwind v4** en Twig:
 ) }}>
 ```
 
-Prefijo BEM `museothyssen-{componente}__elemento` para hooks de CSS/JS (`[data-hello-toggle]`, `.museothyssen-hello__subtitle`).
+BEM prefix `museothyssen-{component}__element` for CSS/JS hooks (`[data-hello-toggle]`, `.museothyssen-hello__subtitle`).
 
-## Composición
+## Composition
 
-Incluir otros SDC con namespace del theme:
+Include other SDCs with the theme namespace:
 
 ```twig
 {% include 'museothyssen:action_link' with {

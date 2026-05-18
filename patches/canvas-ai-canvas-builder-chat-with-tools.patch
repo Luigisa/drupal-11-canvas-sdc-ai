@@ -1,0 +1,11 @@
+--- a/modules/canvas_ai/src/Controller/CanvasBuilder.php
++++ b/modules/canvas_ai/src/Controller/CanvasBuilder.php
+@@ -195,7 +195,7 @@ final class CanvasBuilder extends ControllerBase {
+       AiAgentStatusItemTypes::TextGenerated,
+       AiAgentStatusItemTypes::Finished,
+     ]);
+-    $default = $this->providerService->getDefaultProviderForOperationType('chat');
++    $default = $this->providerService->getDefaultProviderForOperationType('chat_with_tools');
+     if (!\is_array($default) || empty($default['provider_id']) || empty($default['model_id'])) {
+       return new JsonResponse([
+         'status' => FALSE,

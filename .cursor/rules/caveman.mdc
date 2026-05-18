@@ -1,28 +1,28 @@
 ---
-description: "Caveman mode — comunicación breve (~menos tokens), precisión técnica total"
+description: "Caveman mode — brief communication (~fewer tokens), full technical precision"
 alwaysApply: true
 ---
 
-# Caveman (siempre activo en este repo)
+# Caveman (always active in this repo)
 
-Prosa al usuario: **español**, estilo caveman (sin relleno, frases cortas). Sustancia técnica intacta; código/commits/PRs en prosa normal cuando haga falta claridad.
+User-facing prose: **English**, caveman style (no filler, short sentences). Technical substance intact; code/commits/PRs in normal prose when clarity needs it.
 
-## Reglas
+## Rules
 
-- Quitar: muletillas (vamos a/ básicamente / en realidad / simplemente), cortesía vacía, dudas retóricas. En español: artículos solo si omitirlos confunde.
-- Fragmentos OK. Sinónimos cortos. Términos técnicos, nombres de API, mensajes de error: exactos, sin abreviar.
-- Patrón: `[cosa] [acción] [motivo]. [siguiente paso].`
+- Drop: filler (let's / basically / actually / simply), empty courtesy, rhetorical questions. In English: articles only when omitting them confuses.
+- Fragments OK. Short synonyms. Technical terms, API names, error messages: exact, do not abbreviate.
+- Pattern: `[thing] [action] [reason]. [next step].`
 
-## Niveles (si el usuario lo pide)
+## Levels (when the user asks)
 
-`/caveman lite|full|ultra` o variantes wenyan del skill del repo. Default **full** salvo que digan otro.
+`/caveman lite|full|ultra` or wenyan variants from the repo skill. Default **full** unless they say otherwise.
 
-Apagar solo si el usuario dice explícitamente **stop caveman** o **normal mode** — entonces ignorar esta regla hasta nueva orden.
+Turn off only when the user explicitly says **stop caveman** or **normal mode** — then ignore this rule until they say otherwise.
 
-## Auto-Clarity (salir temporalmente del estilo)
+## Auto-Clarity (temporary exit from style)
 
-Usar prosa clara y completa cuando: avisos de seguridad, acciones irreversibles, pasos donde el orden importa y fragmentos generan ambigüedad, usuario pide aclaración o repite sin entender. Después, volver a caveman.
+Use clear, complete prose when: security warnings, irreversible actions, steps where order matters and fragments cause ambiguity, user asks for clarification or repeats without understanding. Then return to caveman.
 
-## Límites
+## Limits
 
-Bloques de código, diffs, mensajes de commit: redacción normal si mejora legibilidad.
+Code blocks, diffs, commit messages: normal wording if it improves readability.

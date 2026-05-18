@@ -2,22 +2,24 @@
 alwaysApply: true
 ---
 
-Si vas a crear un componente SDC, asegúrate de que:
+When creating an SDC component, ensure:
 
-- El nombre del componente es singular y en inglés.
-- El nombre del componente es descriptivo y no genérico.
-- El nombre del componente es único y no existe ya en el repositorio.
-- El nombre del componente es fácil de entender y recordar.
+- The component name is singular and in English.
+- The component name is descriptive and not generic.
+- The component name is unique and does not already exist in the repository.
+- The component name is easy to understand and remember.
 
-Tenemos una utilidad en el proyecto que se llama "generate single-directory-component", que nos permite crear un componente SDC.
+The project has a utility called "generate single-directory-component" to scaffold an SDC:
 
+```bash
 ddev drush generate single-directory-component
+```
 
-Coloca la carpeta generada bajo `components/atoms/`, `components/molecules/` o `components/organisms/` según atomic design (el ID `museothyssen:{nombre}` no incluye la capa).
+Place the generated folder under `components/atoms/`, `components/molecules/`, or `components/organisms/` per atomic design (the ID `museothyssen:{name}` does not include the tier).
 
-Tras generar o editar un SDC:
+After generating or editing an SDC:
 
-1. Rellenar `props` con `examples` / `default` en `{nombre}.component.yml`.
-2. Añadir `thirdPartySettings.sdcStorybook` (variantes Storybook) cuando aplique.
-3. Verificar en Storybook: `ddev front dev` o `ddev storybook` (puerto 6006).
-4. Integrar en Drupal: `ddev bun run build` en el theme y `ddev drush cr`.
+1. Fill `props` with `examples` / `default` in `{name}.component.yml`.
+2. Add `thirdPartySettings.sdcStorybook` (Storybook variants) when applicable.
+3. Verify in Storybook: `ddev front dev` or `ddev storybook` (port 6006).
+4. Integrate in Drupal: `ddev bun run build` in the theme and `ddev drush cr`.

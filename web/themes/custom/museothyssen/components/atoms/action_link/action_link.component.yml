@@ -5,7 +5,7 @@ name: Action link
 status: stable
 group: atoms
 noUi: true
-description: Átomo CTA/enlace (pill). Reutilizable vía {% include 'museothyssen:action_link' %}.
+description: Átomo CTA/enlace (pill). Variantes primary, secondary, tertiary. Reutilizable vía {% include 'museothyssen:action_link' %}.
 
 thirdPartySettings:
   sdcStorybook:
@@ -16,6 +16,16 @@ thirdPartySettings:
         props:
           url: /contacto
           label: Contacto
+      secondary:
+        props:
+          variant: secondary
+          url: /entradas
+          label: Comprar entradas
+      tertiary:
+        props:
+          variant: tertiary
+          url: /coleccion
+          label: Ver colección online
 
 props:
   type: object
@@ -24,6 +34,17 @@ props:
     - url
     - label
   properties:
+    variant:
+      type: string
+      title: Variante visual
+      description: primary (relleno oscuro), secondary (fondo claro + borde, hover invertido), tertiary (mínimo, subrayado + hover suave).
+      enum:
+        - primary
+        - secondary
+        - tertiary
+      default: primary
+      examples:
+        - primary
     attributes:
       type: Drupal\Core\Template\Attribute
       title: Attributes

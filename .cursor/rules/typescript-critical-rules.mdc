@@ -1,50 +1,50 @@
 ---
-description: Reglas obligatorias de TypeScript en behaviors y utilidades del theme museothyssen
+description: Mandatory TypeScript rules for museothyssen theme behaviors and utilities
 globs:
   - web/themes/custom/museothyssen/**/*.ts
 alwaysApply: false
 ---
 
-# Reglas críticas de TypeScript — museothyssen
+# Critical TypeScript rules — museothyssen
 
-Aplican a `js/**/*.ts` y `components/**/js/*.ts`. El markup es **Twig**, no TSX.
+Apply to `js/**/*.ts` and `components/**/js/*.ts`. Markup is **Twig**, not TSX.
 
-## Obligatorio
+## Required
 
-### 1. Sin `else` salvo petición explícita del usuario
+### 1. No `else` unless the user explicitly asks
 
-Preferir early returns y clause guards.
+Prefer early returns and clause guards.
 
-### 2. `type`, no `interface`
+### 2. `type`, not `interface`
 
-Decisión arquitectónica del theme.
+Architectural decision for this theme.
 
-### 3. Sin ternarios anidados
+### 3. No nested ternaries
 
-Extraer a función con `if` sucesivos.
+Extract to a function with successive `if` statements.
 
-### 4. Sin `any`
+### 4. No `any`
 
-Usar tipos explícitos. Si no hay inferencia: `unknown` + comentario:
+Use explicit types. If there is no inference: `unknown` + comment:
 
 ```ts
-// ⚠️ Respuesta AJAX sin contrato tipado en el módulo origen
+// ⚠️ AJAX response without a typed contract from the source module
 const payload: unknown = await response.json();
 ```
 
-### 5. Tipos explícitos y uniones literales
+### 5. Explicit types and literal unions
 
-Preferir `'open' | 'closed'` frente a `string` genérico.
+Prefer `'open' | 'closed'` over generic `string`.
 
-### 6. Sin `enum`
+### 6. No `enum`
 
-Usar union types de literales.
+Use literal union types.
 
-### 7. Sin `switch`
+### 7. No `switch`
 
-Usar `if (value === 'literal') return ...` por caso.
+Use `if (value === 'literal') return ...` per case.
 
-### 8. Mapas string → string con objetos
+### 8. String → string maps as objects
 
 ```ts
 const labelByKey: Record<string, string> = {
@@ -52,43 +52,43 @@ const labelByKey: Record<string, string> = {
 };
 ```
 
-### 9. Iterar con métodos de array
+### 9. Iterate with array methods
 
-`.forEach`, `.map`, `.find`, `.some` — no `for (let i = 0; ...)`. Excepción: `for...of` si hace falta `break`.
+`.forEach`, `.map`, `.find`, `.some` — not `for (let i = 0; ...)`. Exception: `for...of` when `break` is needed.
 
-## Patrón Drupal obligatorio en behaviors
+## Mandatory Drupal pattern in behaviors
 
-Todo JS del theme que toque el DOM:
+All theme JS that touches the DOM:
 
 ```ts
 ((Drupal, once) => {
   Drupal.behaviors.museothyssenMiComponente = {
     attach(context: HTMLElement): void {
       once('mi-clave-unica', '.mi-selector', context).forEach((root) => {
-        // root es Element; castear si hace falta: root as HTMLElement
+        // root is Element; cast if needed: root as HTMLElement
       });
     },
   };
 })(Drupal, once);
 ```
 
-- **Clave `once` única** por behavior (prefijo `museothyssen-`).
-- **Selector acotado** al root del componente (clase BEM `museothyssen-*`).
-- **Dependencias** en `{component}.component.yml`: `core/drupal`, `core/once` (y las que aplique).
-- **Lógica global mínima** en `js/main.ts`; el resto en `components/{tier}/{name}/js/{name}.ts`.
+- **Unique `once` key** per behavior (`museothyssen-` prefix).
+- **Scoped selector** to the component root (BEM class `museothyssen-*`).
+- **Dependencies** in `{component}.component.yml`: `core/drupal`, `core/once` (and others as needed).
+- **Minimal global logic** in `js/main.ts`; the rest in `components/{tier}/{name}/js/{name}.ts`.
 
 ## Imports
 
-Aliases Vite (ver `vite.config.ts`):
+Vite aliases (see `vite.config.ts`):
 
 - `@utils` → `js/utils`
 - `@services` → `js/services`
 - `@shared` → `js/shared`
 
-## Verificación
+## Verification
 
 ```bash
 cd web/themes/custom/museothyssen
 ddev bun run typecheck
-ddev bun run storybook:typecheck   # TS de .storybook/
+ddev bun run storybook:typecheck   # TS in .storybook/
 ```

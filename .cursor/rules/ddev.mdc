@@ -2,4 +2,4 @@
 alwaysApply: true
 ---
 
-Antes de pedirle al usuario que ejecute un comando con ddev o drush, ejecutalo tú mismo y comprueba que funciona.
+Before asking the user to run a `ddev` or `drush` command, run it yourself and confirm it works.

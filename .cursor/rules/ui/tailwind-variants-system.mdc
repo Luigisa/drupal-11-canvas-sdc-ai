@@ -1,20 +1,20 @@
 ---
-description: Variantes de componentes SDC vía schema YAML y Storybook, no tailwind-variants
+description: SDC component variants via YAML schema and Storybook, not tailwind-variants
 globs:
   - web/themes/custom/museothyssen/**/*.component.yml
   - web/themes/custom/museothyssen/**/*.twig
 alwaysApply: false
 ---
 
-# Variantes en museothyssen
+# Variants in museothyssen
 
-**No usamos `tailwind-variants` ni `createVariants`.** Las variantes se modelan con:
+**We do not use `tailwind-variants` or `createVariants`.** Variants are modeled with:
 
-1. **Props** en `{name}.component.yml` (JSON Schema).
-2. **Ramas Twig** acotadas según props (pocas, con early `{% if %}`).
-3. **Stories** en `thirdPartySettings.sdcStorybook` para Storybook.
+1. **Props** in `{name}.component.yml` (JSON Schema).
+2. **Bounded Twig branches** by props (few, with early `{% if %}`).
+3. **Stories** in `thirdPartySettings.sdcStorybook` for Storybook.
 
-## 1. Definir props y ejemplos
+## 1. Define props and examples
 
 ```yaml
 props:
@@ -27,12 +27,12 @@ props:
       examples: [primary]
     label:
       type: string
-      examples: ['Ver exposición']
+      examples: ['View exhibition']
 ```
 
-## 2. Mapear variant → clases en Twig
+## 2. Map variant → classes in Twig
 
-Preferir `{% set %}` al inicio del template, no ternarios anidados en `addClass`:
+Prefer `{% set %}` at the top of the template, not nested ternaries in `addClass`:
 
 ```twig
 {% set variant_classes = {
@@ -47,9 +47,9 @@ Preferir `{% set %}` al inicio del template, no ternarios anidados en `addClass`
 ) }}>{{ label }}</a>
 ```
 
-Si la variante no existe en el mapa, usar `default` en Twig: `variant_classes[tone] ?? variant_classes.primary`.
+If the variant is missing from the map, use Twig `default`: `variant_classes[tone] ?? variant_classes.primary`.
 
-## 3. Storybook por variante
+## 3. Storybook per variant
 
 ```yaml
 thirdPartySettings:
@@ -59,29 +59,29 @@ thirdPartySettings:
       secondary:
         props:
           variant: secondary
-          label: Más información
+          label: More information
           url: /info
 ```
 
-Verificar en `ddev storybook` antes de integrar en Drupal.
+Verify in `ddev storybook` before integrating in Drupal.
 
-## 4. Variantes visuales vs datos
+## 4. Visual variants vs data
 
-| Tipo | Dónde | Ejemplo |
+| Type | Where | Example |
 |------|-------|---------|
-| Visual (color, tamaño) | Prop `variant` + mapa de clases | `action_link` primary/secondary |
-| Contenido | Props de contenido | `title`, `image`, `link_url` |
-| Estado JS | `data-*` + behavior | `data-hello-toggle`, `toggleDataState` |
+| Visual (color, size) | `variant` prop + class map | `action_link` primary/secondary |
+| Content | Content props | `title`, `image`, `link_url` |
+| JS state | `data-*` + behavior | `data-hello-toggle`, `toggleDataState` |
 
-No duplicar archivos `.twig` por variante salvo que el markup sea **estructuralmente distinto**.
+Do not duplicate `.twig` files per variant unless markup is **structurally different**.
 
-## Composición
+## Composition
 
-Variantes complejas = SDC hijo (`museothyssen:action_link`) o nuevo SDC, no copiar bloques de 40 líneas.
+Complex variants = child SDC (`museothyssen:action_link`) or a new SDC, not 40-line copied blocks.
 
-## Dependencias por variante
+## Dependencies per variant
 
-Si una variante necesita otra librería (p. ej. `canvas/image`):
+If a variant needs another library (e.g. `canvas/image`):
 
 ```yaml
 libraryOverrides:
